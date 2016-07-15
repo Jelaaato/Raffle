@@ -34,6 +34,7 @@
           <Property Name="winner_flag" Type="bit" />
           <Property Name="registered_flag" Type="bit" />
           <Property Name="registered_datetime" Type="datetime" />
+          <Property Name="display_name" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Prizes">
           <Key>
@@ -96,6 +97,7 @@
           <Property Name="winner_flag" Type="Boolean" />
           <Property Name="registered_flag" Type="Boolean" />
           <Property Name="registered_datetime" Type="DateTime" Precision="3" />
+          <Property Name="display_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Prizes">
           <Key>
@@ -159,6 +161,7 @@
                 <ScalarProperty Name="winner_flag" ColumnName="winner_flag" />
                 <ScalarProperty Name="registered_flag" ColumnName="registered_flag" />
                 <ScalarProperty Name="registered_datetime" ColumnName="registered_datetime" />
+                <ScalarProperty Name="display_name" ColumnName="display_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

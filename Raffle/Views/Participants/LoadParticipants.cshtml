@@ -1,14 +1,9 @@
 ﻿@using Raffle.Models;
-@model IEnumerable<Participants>
+@model Raffle.Models.ParticipantsViewModel
 @{
     Layout = null;
     ViewBag.Title = "Raffle";
 }
-
-@*@foreach (var e in Model)
-{
-    <h4>@e.last_name, @e.first_name @e.middle_name</h4>
-}*@
 
 <!DOCTYPE html>
 <html>
@@ -16,13 +11,13 @@
     <title>@ViewBag.Title</title>
     <meta charset="UTF-8">
     <script>
-        var users = @Html.Raw(Json.Encode(Session["participants"]));
+    var users = @Html.Raw(Json.Encode(Model.participants));
     </script>
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/JSFiles/library.js"></script>
     <script type="text/javascript">
         window.onload = function () {
-            list = [users];
+            list = users;
             var t = creatSlotMachine
                 ($(".slotMachineContainer")[0], list);
             setTimeout(function () {

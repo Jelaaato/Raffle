@@ -15,19 +15,15 @@ namespace Raffle.Controllers
         public ActionResult LoadParticipants()
         {
             var id = new Guid(Session["event"].ToString());
-            List<Participants> participant = new List<Participants>().Where(a => a.event_id == id).Select(b => b.last_name).ToList();
 
-            //participant = (from e in db.Participants
-            //                    select new
-            //                    {
-            //                        e.event_id,
-            //                        Name = e.last_name + ", " + e.first_name + " " + e.middle_name
-            //                    }).Where(a => a.event_id == id).ToList();
-
-            //var participants = db.Participants.Where(a => a.event_id == id).ToList();
-            Session["participants"] = participant.AsEnumerable();
+            var ptcpnts = new ParticipantsViewModel
+            {
+                participants = (from p in db.Participants
+                                where p.event_id == id
+                                select p.display_name).ToList()
+            };
             
-            return View();
+            return View(ptcpnts);
         }
     }
 }
