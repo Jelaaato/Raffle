@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EventsOrganizerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="event_name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="event_date" Type="date" Nullable="false" />
+          <Property Name="event_location" Type="varchar" MaxLength="250" />
+          <Property Name="start_time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="end_time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="event_banner" Type="varbinary(max)" />
+          <Property Name="delete_flag" Type="bit" />
+          <Property Name="deleted_datetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Participants">
+          <Key>
+            <PropertyRef Name="participant_id" />
+          </Key>
+          <Property Name="participant_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="event_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="employee_number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="middle_name" Type="varchar" MaxLength="100" />
+          <Property Name="department_name" Type="varchar" MaxLength="150" />
+          <Property Name="position_name" Type="varchar" MaxLength="150" />
+          <Property Name="winner_flag" Type="bit" />
+          <Property Name="registered_flag" Type="bit" />
+          <Property Name="registered_datetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Prizes">
+          <Key>
+            <PropertyRef Name="prize_id" />
+          </Key>
+          <Property Name="prize_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="event_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="prize_name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="raffle_flag" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Winners">
+          <Key>
+            <PropertyRef Name="winner_id" />
+          </Key>
+          <Property Name="winner_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="event_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="prize_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="prize_name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="participant_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="winner_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="winner_department" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EventsOrganizerModelStoreContainer">
+          <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participants" EntityType="Self.Participants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prizes" EntityType="Self.Prizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Winners" EntityType="Self.Winners" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EventsOrganizerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="event_id" />
+          </Key>
+          <Property Name="event_id" Type="Guid" Nullable="false" />
+          <Property Name="event_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="event_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="event_location" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="start_time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="end_time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="event_banner" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="delete_flag" Type="Boolean" />
+          <Property Name="deleted_datetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Participants">
+          <Key>
+            <PropertyRef Name="participant_id" />
+          </Key>
+          <Property Name="participant_id" Type="Guid" Nullable="false" />
+          <Property Name="event_id" Type="Guid" Nullable="false" />
+          <Property Name="employee_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="middle_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="department_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="position_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="winner_flag" Type="Boolean" />
+          <Property Name="registered_flag" Type="Boolean" />
+          <Property Name="registered_datetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Prizes">
+          <Key>
+            <PropertyRef Name="prize_id" />
+          </Key>
+          <Property Name="prize_id" Type="Guid" Nullable="false" />
+          <Property Name="event_id" Type="Guid" Nullable="false" />
+          <Property Name="prize_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="raffle_flag" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Winners">
+          <Key>
+            <PropertyRef Name="winner_id" />
+          </Key>
+          <Property Name="winner_id" Type="Guid" Nullable="false" />
+          <Property Name="event_id" Type="Guid" Nullable="false" />
+          <Property Name="prize_id" Type="Guid" Nullable="false" />
+          <Property Name="prize_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="participant_id" Type="Guid" Nullable="false" />
+          <Property Name="winner_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="winner_department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EventsOrganizerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Events" EntityType="Self.Events" />
+          <EntitySet Name="Participants" EntityType="Self.Participants" />
+          <EntitySet Name="Prizes" EntityType="Self.Prizes" />
+          <EntitySet Name="Winners" EntityType="Self.Winners" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EventsOrganizerModelStoreContainer" CdmEntityContainer="EventsOrganizerEntities">
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="EventsOrganizerModel.Events">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="event_name" ColumnName="event_name" />
+                <ScalarProperty Name="event_date" ColumnName="event_date" />
+                <ScalarProperty Name="event_location" ColumnName="event_location" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="event_banner" ColumnName="event_banner" />
+                <ScalarProperty Name="delete_flag" ColumnName="delete_flag" />
+                <ScalarProperty Name="deleted_datetime" ColumnName="deleted_datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participants">
+            <EntityTypeMapping TypeName="EventsOrganizerModel.Participants">
+              <MappingFragment StoreEntitySet="Participants">
+                <ScalarProperty Name="participant_id" ColumnName="participant_id" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="employee_number" ColumnName="employee_number" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="middle_name" ColumnName="middle_name" />
+                <ScalarProperty Name="department_name" ColumnName="department_name" />
+                <ScalarProperty Name="position_name" ColumnName="position_name" />
+                <ScalarProperty Name="winner_flag" ColumnName="winner_flag" />
+                <ScalarProperty Name="registered_flag" ColumnName="registered_flag" />
+                <ScalarProperty Name="registered_datetime" ColumnName="registered_datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prizes">
+            <EntityTypeMapping TypeName="EventsOrganizerModel.Prizes">
+              <MappingFragment StoreEntitySet="Prizes">
+                <ScalarProperty Name="prize_id" ColumnName="prize_id" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="prize_name" ColumnName="prize_name" />
+                <ScalarProperty Name="raffle_flag" ColumnName="raffle_flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Winners">
+            <EntityTypeMapping TypeName="EventsOrganizerModel.Winners">
+              <MappingFragment StoreEntitySet="Winners">
+                <ScalarProperty Name="winner_id" ColumnName="winner_id" />
+                <ScalarProperty Name="event_id" ColumnName="event_id" />
+                <ScalarProperty Name="prize_id" ColumnName="prize_id" />
+                <ScalarProperty Name="prize_name" ColumnName="prize_name" />
+                <ScalarProperty Name="participant_id" ColumnName="participant_id" />
+                <ScalarProperty Name="winner_name" ColumnName="winner_name" />
+                <ScalarProperty Name="winner_department" ColumnName="winner_department" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,17 @@
+﻿@using Raffle.Models;
+@model IEnumerable<Events>
+
+@{
+    ViewBag.Title = "Choose an Event";
+}
+    @*<div class="jumbotron" style="background-color:#EB8A44;"></div>
+    <div class="jumbotron" style="background-color:#F9DC24;"></div>
+    <div class="jumbotron" style="background-color:#4B7447;"></div>
+    <div class="jumbotron" style="background-color:#8EBA43;"></div>*@
+
+    <h2>Choose an Event</h2>
+    @foreach (var e in Model)
+    {
+        <a href="@Url.Action("AddPrizes", "Prize", new { id = e.event_id })" class="btn btn-default">@e.event_name</a>
+        <br />
+    }
