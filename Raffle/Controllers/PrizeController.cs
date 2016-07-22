@@ -12,17 +12,23 @@ namespace Raffle.Controllers
     {
         private EventsOrganizerEntities db = new EventsOrganizerEntities();
         // GET: Prize
-        public ActionResult AddPrizes()
+
+        public ActionResult Prizes(Guid? id)
         {
-            return View();
+            var model = new PrizeViewModel()
+            {
+                prizes = db.Prizes.Where(a => a.event_id == id).ToList()
+            };
+
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult AddPrizes(PrizeViewModel model, Guid id)
         {
-            try
-            {
+                Session["event"] = id;
                 int prizecount = model.Quantity;
+
                 for (int i = 1; i <= prizecount; i++ )
                 {
                     Prizes prizes = new Prizes()
@@ -36,23 +42,11 @@ namespace Raffle.Controllers
                     db.Prizes.Add(prizes);
                     db.SaveChanges();
                 }
-                ModelState.Clear();
-                Session["event"] = id;
-                return View();
-            }
-            catch (DbEntityValidationException dbex)
-            {
-                Exception ex = dbex;
-                foreach (var error in dbex.EntityValidationErrors)
-                {
-                    foreach (var err in error.ValidationErrors)
-                    {
-                        string msg = string.Format("{0}:{1}", error.Entry.Entity.ToString(), err.ErrorMessage);
-                        ex = new InvalidOperationException(msg, ex);
-                    }
-                }
-                throw ex;
-            }
-            }
+               
+            ModelState.Clear();
+                
+            return RedirectToAction("Prizes");
+        }
+            
     }
 }

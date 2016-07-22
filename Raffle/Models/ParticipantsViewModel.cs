@@ -9,4 +9,10 @@ namespace Raffle.Models
     {
         public IEnumerable<string> participants { get; set; }
     }
+
+    //public class PrizeViewModel
+    //{
+    //    public string PrizeName { get; set; }
+    //    public int Quantity { get; set; }
+    //}
 }

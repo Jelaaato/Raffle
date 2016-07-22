@@ -7,7 +7,9 @@ namespace Raffle.Models
 {
     public class PrizeViewModel
     {
-        public string PrizeName { get; set; }
-        public int Quantity { get; set; }
+        public Guid event_id { get; set; }
+        public string prize_name { get; set; }
+        public int quantity { get; set; }
+        public IEnumerable<Prizes> prizes { get; set; }
     }
 }

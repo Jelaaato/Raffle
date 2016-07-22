@@ -19,11 +19,18 @@ namespace Raffle.Controllers
             var ptcpnts = new ParticipantsViewModel
             {
                 participants = (from p in db.Participants
-                                where p.event_id == id
+                                where p.event_id == id && p.winner_flag == false
                                 select p.display_name).ToList()
             };
             
             return View(ptcpnts);
+        }
+
+        public ActionResult DisplayPrize()
+        {
+            var id = new Guid(Session["event"].ToString());
+
+            return View();
         }
     }
 }

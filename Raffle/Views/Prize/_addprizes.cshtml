@@ -1,0 +1,8 @@
+﻿@model Raffle.Models.PrizeViewModel
+
+@using (Html.BeginForm("AddPrizes", "Prize", FormMethod.Post))
+    {
+        @Html.TextBoxFor(a => a.prize_name)
+        @Html.TextBoxFor(a => a.quantity)
+        <button class="btn btn-default">Save</button>
+    } 

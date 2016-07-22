@@ -12,6 +12,6 @@
     <h2>Choose an Event</h2>
     @foreach (var e in Model)
     {
-        <a href="@Url.Action("AddPrizes", "Prize", new { id = e.event_id })" class="btn btn-default">@e.event_name</a>
+        <a href="@Url.Action("Prizes", "Prize", new { id = e.event_id })" class="btn btn-default">@e.event_name</a>
         <br />
     }
