@@ -20,28 +20,29 @@ namespace Raffle.Controllers
                 prizes = db.Prizes.Where(a => a.event_id == id).ToList()
             };
 
+            Session["event"] = id;
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult AddPrizes(PrizeViewModel model, Guid id)
+        public ActionResult Prizes(PrizeViewModel model, Guid id)
         {
-                Session["event"] = id;
-                int prizecount = model.Quantity;
+               
+                int prizecount = model.quantity;
 
-                for (int i = 1; i <= prizecount; i++ )
-                {
-                    Prizes prizes = new Prizes()
+                    for (int i = 1; i <= prizecount; i++ )
                     {
-                        prize_id = Guid.NewGuid(),
-                        event_id = id,
-                        prize_name = model.PrizeName,
-                        raffle_flag = false
-                    };
+                        Prizes prizes = new Prizes()
+                        {
+                            prize_id = Guid.NewGuid(),
+                            event_id = id,
+                            prize_name = model.prize_name,
+                            raffle_flag = false
+                        };
 
-                    db.Prizes.Add(prizes);
-                    db.SaveChanges();
-                }
+                        db.Prizes.Add(prizes);
+                        db.SaveChanges();
+                    }
                
             ModelState.Clear();
                 

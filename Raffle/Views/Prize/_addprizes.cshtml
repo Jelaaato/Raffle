@@ -1,6 +1,6 @@
 ﻿@model Raffle.Models.PrizeViewModel
 
-@using (Html.BeginForm("AddPrizes", "Prize", FormMethod.Post))
+@using (Html.BeginForm("Prizes", "Prize", FormMethod.Post))
     {
         @Html.TextBoxFor(a => a.prize_name)
         @Html.TextBoxFor(a => a.quantity)
