@@ -27,10 +27,12 @@
              $(".prize").hide("nomal", function () {
                  $(".screen").css("display", "none")
              })
-         }), $(t.button).on("click", function () {
+         }) 
+            $(t.button).on("click", function () {
              animateButton($(t.button)), t.joysticks.addClass("joysticksAnimate"), setTimeout(function () {
                  t.joysticks.removeClass("joysticksAnimate")
-             }, 1850), drawARaffle(t, list)
+             }, 1850)
+                , drawARaffle(t, list)
          }).css("cursor", "pointer")
         };
     </script>
@@ -38,8 +40,8 @@
     <link href="~/Content/library.css" rel="stylesheet" />
 </head>
 <body>
-   <div> 
-       <h1></h1> 
+   <div>
+       @Model.prizes.prize_name
     </div>
     <div class="container">
         <div class="slotMachineContainer">
