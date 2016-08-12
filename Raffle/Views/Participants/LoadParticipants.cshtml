@@ -18,22 +18,24 @@
     <script type="text/javascript">
         window.onload = function () {
             list = users;
-            var t = creatSlotMachine
-                ($(".slotMachineContainer")[0], list);
+            var t = creatSlotMachine($(".slotMachineContainer")[0], list);
+
             setTimeout(function () {
                 putList(t.list, list)
             }, 50),
+
          $(".screen .confirm").on("click", function () {
              $(".prize").hide("nomal", function () {
                  $(".screen").css("display", "none")
              })
-         }) 
+         }), 
+
             $(t.button).on("click", function () {
              animateButton($(t.button)), t.joysticks.addClass("joysticksAnimate"), setTimeout(function () {
                  t.joysticks.removeClass("joysticksAnimate")
-             }, 1850)
-                , drawARaffle(t, list)
-         }).css("cursor", "pointer")
+             }, 1850), 
+                drawARaffle(t, list)
+            }).css("cursor", "pointer")
         };
     </script>
     <link href="~/Content/index.css" rel="stylesheet" />

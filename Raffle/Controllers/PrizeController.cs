@@ -15,10 +15,20 @@ namespace Raffle.Controllers
 
         public ActionResult Prizes(Guid? id)
         {
+
             var model = new PrizeViewModel()
             {
-                prizes = db.Prizes.Where(a => a.event_id == id).ToList()
+                prize = (from b in db.Prizes
+                        where b.event_id == id
+                        group b by b.prize_name
+                            into grp
+                            select new PrizeDTO
+                                {
+                                    distinct_prize_name = grp.Key,
+                                    count = grp.Select(a => a.prize_name).Count()
+                                })          
             };
+
 
             Session["event"] = id;
             return View(model);

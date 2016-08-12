@@ -10,6 +10,13 @@ namespace Raffle.Models
         public Guid event_id { get; set; }
         public string prize_name { get; set; }
         public int quantity { get; set; }
-        public IEnumerable<Prizes> prizes { get; set; }
+        public IQueryable<PrizeDTO> prize { get; set; }
+
+    }
+
+    public class PrizeDTO
+    {
+        public string distinct_prize_name { get; set; }
+        public int count { get; set; }
     }
 }
