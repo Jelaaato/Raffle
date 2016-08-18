@@ -14,7 +14,7 @@ namespace Raffle.Controllers
         private EventsOrganizerEntities db = new EventsOrganizerEntities();
         public ActionResult Index()
         {
-            return View(db.Events.ToList());
+           return View(db.Events.OrderBy(e => e.event_name).ToList());
         }
     }
 }
