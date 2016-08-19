@@ -1,9 +1,9 @@
-﻿.bground {
+﻿.header_background {
     background: url('../Images/eventwallpaper5_rockandroll_black.jpg') no-repeat center;
     background-size: cover;
 }
 
-.bground2 {
-    background: url('../Images/eventwallpaper_black.jpg') no-repeat center center fixed;
+.events_background {
+    background: url('../Images/eventwallpaper6.jpg') no-repeat center center fixed;
     background-size: cover;
 }

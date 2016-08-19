@@ -5,19 +5,15 @@
     Layout = null;
     ViewBag.Title = "Choose an Event";
 }
-    @*<div class="jumbotron" style="background-color:#EB8A44;"></div>
-    <div class="jumbotron" style="background-color:#F9DC24;"></div>
-    <div class="jumbotron" style="background-color:#4B7447;"></div>
-    <div class="jumbotron" style="background-color:#8EBA43;"></div>*@
 
 <link href="~/Content/Site.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/buttons.css" rel="stylesheet" />
 <link href="~/Content/animate.css" rel="stylesheet" />
 
-<div class="container-fluid">
+<div class="container-fluid header_background">
     <div class="row">
-        <div style="height:40%;font-size:60px;font-weight:600;color:white;margin-top:auto;" class="text-center bground">
+        <div style="height:40%;font-size:60px;font-weight:600;margin-top:auto;" class="text-center">
             @*@DateTime.Now.Year.ToString()*@
             <br />
             <span style="font-size:80px;color:white;letter-spacing:50px;">Choose an Event</span>
@@ -25,7 +21,7 @@
     </div>   
 </div>
 <br />
-<div class="container-fluid bground2">
+<div class="container-fluid events_background">
         <div>
             <center>
                 @foreach (var e in Model)
@@ -34,7 +30,7 @@
                     <div class="row">
                         <a href="@Url.Action("Prizes", "Prize", new { id = e.event_id})">
                             <div class="col-lg-12" style="height:30% !important;border-bottom:5px solid white;padding-top:5%">
-                                <span style="font-size:40px;color:black;font-weight:bolder;letter-spacing:40px;">@e.event_name</span>
+                                <span style="font-size:45px;color:black;font-weight:bolder;letter-spacing:40px;">@e.event_name</span>
                             </div>
                         </a>
                     </div>
