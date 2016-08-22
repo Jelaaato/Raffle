@@ -9,6 +9,7 @@ namespace Raffle.Controllers
 {
     public class ParticipantsController : Controller
     {
+
         private EventsOrganizerEntities db = new EventsOrganizerEntities();
 
         // GET: Participants

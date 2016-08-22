@@ -136,8 +136,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\buttons.css" />
-    <Content Include="Images\eventwallpaper.jpg" />
-    <Content Include="Images\eventwallpaper2.jpg" />
     <Content Include="Content\index.css" />
     <Content Include="Content\library.css" />
     <Content Include="Content\Site.css" />
@@ -157,18 +155,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\background.jpg" />
-    <Content Include="Images\bground.jpg" />
     <Content Include="Images\button.png" />
-    <Content Include="Images\eventwallpaper3.jpg" />
-    <Content Include="Images\eventwallpaper4.jpg" />
-    <Content Include="Images\eventwallpaper5.jpg" />
-    <Content Include="Images\eventwallpaper5_rockandroll.jpg" />
     <Content Include="Images\eventwallpaper5_rockandroll_black.jpg" />
     <Content Include="Images\eventwallpaper6.jpg" />
-    <Content Include="Images\eventwallpaper_black.jpg" />
-    <Content Include="Images\eventwallpaper_green.jpg" />
-    <Content Include="Images\eventwallpaper_light.jpg" />
-    <Content Include="Images\eventwallpaper_white.jpg" />
     <Content Include="Images\frame.png" />
     <Content Include="Images\joysticks.png" />
     <Content Include="Images\prize.png" />
@@ -241,6 +230,7 @@
       <DependentUpon>EventsOrganizerEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ParticipantsViewModel.cs" />
+    <Compile Include="Models\PasscodeModel.cs" />
     <Compile Include="Models\Prizes.cs">
       <DependentUpon>EventsOrganizerEntities.tt</DependentUpon>
     </Compile>
@@ -260,6 +250,7 @@
     <Content Include="Views\Participants\LoadParticipants.cshtml" />
     <Content Include="Views\Prize\Prizes.cshtml" />
     <Content Include="Views\Prize\_addprizes.cshtml" />
+    <Content Include="Views\Home\ValidatePasscode.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

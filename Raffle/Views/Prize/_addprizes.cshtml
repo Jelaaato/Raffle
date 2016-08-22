@@ -1,8 +1,13 @@
 ﻿@model Raffle.Models.PrizeViewModel
 
-@using (Html.BeginForm("Prizes", "Prize", FormMethod.Post))
-    {
-        @Html.TextBoxFor(a => a.prize_name)
-        @Html.TextBoxFor(a => a.quantity)
-        <button class="btn btn-default">Save</button>
-    } 
+<center>
+    <div style="width:75%">
+        @using (Html.BeginForm("Prizes", "Prize", FormMethod.Post))
+        {
+            @Html.TextBoxFor(a => a.prize_name, new { @class = "form-control", @placeholder = "Prize" })
+            <br />
+            @Html.TextBoxFor(a => a.quantity, new { @Value = "", @class = "form-control", @placeholder = "Quantity" })
+            <button class="btn btn-default">Save</button><a href="@Url.Action("LoadParticipants", "Participants")" role="button" class="btn btn-default">Continue</a>
+        }
+    </div>
+</center>

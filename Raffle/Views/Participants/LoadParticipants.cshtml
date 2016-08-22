@@ -39,12 +39,19 @@
         };
         
     </script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/index.css" rel="stylesheet" />
     <link href="~/Content/library.css" rel="stylesheet" />
 </head>
 <body>
-   <div>
-       @*@Model.prizes.prize_name*@
+    <div class="container-fluid header_background">
+        <div class="row">
+            <div style="height:70%;font-size:60px;font-weight:600;margin-top:auto;" class="text-center">
+                <br />
+                <span style="font-size:80px;color:white;letter-spacing:50px;">@Session["eventName"].ToString()</span>
+            </div>
+        </div>
     </div>
     <div class="container">
         <div class="slotMachineContainer">
@@ -56,7 +63,7 @@
     <div class="screen">
         <div class="prize">
             <div class="name" >
-                <p></p> @*Display Prize*@ 
+                <p>.</p> @*Display Prize*@ 
                 <p><span></span></p>
             </div>
             <div class="confirm">

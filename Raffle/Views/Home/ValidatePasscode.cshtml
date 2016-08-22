@@ -1,0 +1,42 @@
+﻿@model Raffle.Models.PasscodeModel
+           
+@{
+    Layout = null;
+}
+
+    <meta name="viewport" content="width=device-width" />
+    <title>ValidatePasscode</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
+
+    <div class="container-fluid header_background">
+        <div class="row">
+            <div style="height:40%;font-size:60px;font-weight:600;margin-top:auto;" class="text-center">
+                <br />
+                <span style="font-size:80px;color:white;letter-spacing:50px;">@Session["eventName"].ToString()</span>
+            </div>
+        </div>
+    </div>
+    
+    <br />
+
+<center>
+    <div style="width:25%;margin-top:5%;">
+        <span class="removeBullet">@Html.ValidationSummary("", new { @class = "text-danger" })</span>
+        @using (Html.BeginForm("ValidatePasscode", "Home", FormMethod.Post))
+        {
+    <div class="form-group">
+        <h3>Enter Passcode</h3>
+    </div>
+    <div class="form-group">
+        @Html.PasswordFor(a => a.passcode, new { @class = "form-control text-center" })
+        <br />
+        <button type="submit" class="btn btn-block" style="background-color:#8EB842;">Continue</button>
+    </div>
+        }
+    </div>
+</center>
+
+
+

@@ -13,9 +13,9 @@ namespace Raffle.Controllers
         private EventsOrganizerEntities db = new EventsOrganizerEntities();
         // GET: Prize
 
-        public ActionResult Prizes(Guid? id)
+        public ActionResult Prizes()
         {
-
+            var id = new Guid(Session["event"].ToString());
             var model = new PrizeViewModel()
             {
                 prize = (from b in db.Prizes
@@ -30,14 +30,14 @@ namespace Raffle.Controllers
             };
 
 
-            Session["event"] = id;
+            //Session["event"] = id;
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Prizes(PrizeViewModel model, Guid id)
+        public ActionResult Prizes(PrizeViewModel model)
         {
-               
+            var id = new Guid(Session["event"].ToString());
                 int prizecount = model.quantity;
 
                     for (int i = 1; i <= prizecount; i++ )

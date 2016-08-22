@@ -23,5 +23,6 @@ namespace Raffle.Models
         public byte[] event_banner { get; set; }
         public Nullable<bool> delete_flag { get; set; }
         public Nullable<System.DateTime> deleted_datetime { get; set; }
+        public int passcode { get; set; }
     }
 }

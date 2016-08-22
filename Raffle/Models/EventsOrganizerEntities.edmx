@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EventsOrganizerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EventsOrganizerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Events">
           <Key>
             <PropertyRef Name="event_id" />
@@ -16,6 +16,7 @@
           <Property Name="start_time" Type="time" Precision="7" Nullable="false" />
           <Property Name="end_time" Type="time" Precision="7" Nullable="false" />
           <Property Name="event_banner" Type="varbinary(max)" />
+          <Property Name="passcode" Type="int" Nullable="false" />
           <Property Name="delete_flag" Type="bit" />
           <Property Name="deleted_datetime" Type="datetime" />
         </EntityType>
@@ -63,8 +64,7 @@
           <EntitySet Name="Prizes" EntityType="Self.Prizes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Winners" EntityType="Self.Winners" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EventsOrganizerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -81,6 +81,7 @@
           <Property Name="event_banner" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="delete_flag" Type="Boolean" />
           <Property Name="deleted_datetime" Type="DateTime" Precision="3" />
+          <Property Name="passcode" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Participants">
           <Key>
@@ -135,6 +136,7 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Events">
               <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="passcode" ColumnName="passcode" />
                 <ScalarProperty Name="event_id" ColumnName="event_id" />
                 <ScalarProperty Name="event_name" ColumnName="event_name" />
                 <ScalarProperty Name="event_date" ColumnName="event_date" />

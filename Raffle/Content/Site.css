@@ -7,3 +7,7 @@
     background: url('../Images/eventwallpaper6.jpg') no-repeat center center fixed;
     background-size: cover;
 }
+
+.removeBullet {
+    list-style: none;
+}
