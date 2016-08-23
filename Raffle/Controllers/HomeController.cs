@@ -35,7 +35,7 @@ namespace Raffle.Controllers
 
                 if (model.passcode == code)
                 {
-                    return RedirectToAction("Prizes", "Prize");
+                    return RedirectToAction("Prize", "Prize");
                 }
                 else
                 {

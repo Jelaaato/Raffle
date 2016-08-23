@@ -2,7 +2,7 @@
 
 <center>
     <div style="width:75%">
-        @using (Html.BeginForm("Prizes", "Prize", FormMethod.Post))
+        @using (Html.BeginForm("Prize", "Prize", FormMethod.Post))
         {
             @Html.TextBoxFor(a => a.prize_name, new { @class = "form-control", @placeholder = "Prize" })
             <br />

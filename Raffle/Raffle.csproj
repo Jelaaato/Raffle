@@ -162,6 +162,7 @@
     <Content Include="Images\joysticks.png" />
     <Content Include="Images\prize.png" />
     <Content Include="Images\raffle.png" />
+    <Content Include="Images\raffle2.png" />
     <Content Include="Images\shadow.png" />
     <Content Include="JSFiles\index.js" />
     <Content Include="JSFiles\library.js" />
@@ -248,7 +249,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Participants\LoadParticipants.cshtml" />
-    <Content Include="Views\Prize\Prizes.cshtml" />
+    <Content Include="Views\Prize\Prize.cshtml" />
     <Content Include="Views\Prize\_addprizes.cshtml" />
     <Content Include="Views\Home\ValidatePasscode.cshtml" />
     <None Include="Web.Debug.config">

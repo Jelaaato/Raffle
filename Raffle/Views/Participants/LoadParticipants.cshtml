@@ -5,17 +5,13 @@
     ViewBag.Title = "Raffle";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
+
     <title>@ViewBag.Title</title>
     <meta charset="UTF-8">
-    <script>
-    var users = @Html.Raw(Json.Encode(Model.participants));
-    </script>
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/JSFiles/library.js"></script>
     <script type="text/javascript">
+        var users = @Html.Raw(Json.Encode(Model.participants));
         window.onload = function () {
             list = users;
             var t = creatSlotMachine($(".slotMachineContainer")[0], list);
@@ -28,31 +24,30 @@
              $(".prize").hide("nomal", function () {
                  $(".screen").css("display", "none")
              })
-         }), 
+         }),
 
             $(t.button).on("click", function () {
              animateButton($(t.button)), t.joysticks.addClass("joysticksAnimate"), setTimeout(function () {
                  t.joysticks.removeClass("joysticksAnimate")
-             }, 1850), 
+             }, 1850),
                 drawARaffle(t, list)
             }).css("cursor", "pointer")
         };
-        
     </script>
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/index.css" rel="stylesheet" />
     <link href="~/Content/library.css" rel="stylesheet" />
-</head>
-<body>
+
     <div class="container-fluid header_background">
         <div class="row">
-            <div style="height:70%;font-size:60px;font-weight:600;margin-top:auto;" class="text-center">
+            <div style="height:33%;font-size:60px;font-weight:600;margin-top:auto;" class="text-center">
                 <br />
                 <span style="font-size:80px;color:white;letter-spacing:50px;">@Session["eventName"].ToString()</span>
             </div>
         </div>
     </div>
+
     <div class="container">
         <div class="slotMachineContainer">
         </div>
@@ -71,5 +66,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+

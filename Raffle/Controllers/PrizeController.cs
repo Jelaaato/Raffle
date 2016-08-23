@@ -13,10 +13,10 @@ namespace Raffle.Controllers
         private EventsOrganizerEntities db = new EventsOrganizerEntities();
         // GET: Prize
 
-        public ActionResult Prizes()
+        public ActionResult Prize()
         {
             var id = new Guid(Session["event"].ToString());
-            var model = new PrizeViewModel()
+            var model = new PrizeViewModel
             {
                 prize = (from b in db.Prizes
                         where b.event_id == id
@@ -35,7 +35,7 @@ namespace Raffle.Controllers
         }
 
         [HttpPost]
-        public ActionResult Prizes(PrizeViewModel model)
+        public ActionResult Prize(PrizeViewModel model)
         {
             var id = new Guid(Session["event"].ToString());
                 int prizecount = model.quantity;
@@ -57,6 +57,16 @@ namespace Raffle.Controllers
             ModelState.Clear();
                 
             return RedirectToAction("Prizes");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(Guid? id)
+        {
+            Prizes prizes = db.Prizes.Find(id);
+            db.Prizes.Remove(prizes);
+            db.SaveChanges();
+
+            return RedirectToAction("Prize");
         }
             
     }

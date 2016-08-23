@@ -14,7 +14,6 @@
 <div class="container-fluid header_background">
     <div class="row">
         <div style="height:40%;font-size:60px;font-weight:600;margin-top:auto;" class="text-center">
-            @*@DateTime.Now.Year.ToString()*@
             <br />
             <span style="font-size:80px;color:white;letter-spacing:50px;">Choose an Event</span>
         </div>
@@ -28,7 +27,6 @@
             <center>
                 @foreach (var e in Model)
                 {
-                    @*<a href="@Url.Action("Prizes", "Prize", new { id = e.event_id })" class="btn btn-default outline round animated flipInX" style="font-size:30px;color:black;margin:auto;padding-right:10px;padding-left:10px;margin-bottom:20px;margin-right:10px;">@e.event_name</a>*@
                     <div class="row">
                         <a href="@Url.Action("ValidatePasscode", "Home", new { id = e.event_id, name = e.event_name })">
                             <div class="col-lg-12" style="height:30% !important;border-bottom:5px solid white;padding-top:5%">
