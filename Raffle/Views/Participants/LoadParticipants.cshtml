@@ -58,36 +58,28 @@
                 <p>&nbsp;</p>
                 <p><span></span></p>
             </div>
-            <a href="@Url.Action("UpdateFlag", "Participants", new { prize_id = @Model.prizes.prize_id, prize_name = @Model.prizes.prize_name})" class="btn confirm">
+            <a id="raffleAction" href="#" class="confirm">
                 Raffle Again
             </a>
-            @*<button class="btn btn-xs">Show</button>*@
-            @*<script>
-                function winnername() {
-                    var winner = $(".name p span").text();
-                    return winner;
-                }
-            </script>*@
-
-            @*<a href='@Url.Action("UpdateFlag", "Participants", new { prize_id = @Model.prizes.prize_id, prize_name = @Model.prizes.prize_name})' class="btn btn-xs">Prize</a>*@
-            
+            @*<a href="#" id="showName">Show</a>*@
         </div>
     </div>
 
-@*<script>
-    $("#btnShow").on("click", function() {
-        document.getElementById('winner').value = $(".name p span").text();
-    })
-</script>*@
+<script>
+    var baseUrl = '@Url.Action("UpdateFlag", "Participants")';
+    $('#raffleAction').on("click", function() {
+        var url = baseUrl + '?prize_id=' + '@Model.prizes.prize_id' + '&prize_name=' + '@Model.prizes.prize_name' + '&wname=' + $('.name p span').text()
+        location.href = url;
+    });
+</script>
 
 @*<script>
-    document.getElementById("btnShow").onclick = function() { Winner() };
-    function Winner(){
-        var winner_name = $(".name p span").text()
-        window.load("@Url.Action("UpdateFlag", "Participants", new { prize_id = @Model.prizes.prize_id, prize_name = @Model.prizes.prize_name})?wname=" + winner_name);
-    };
+    var baseUrl = '@Url.Action("Sample", "Participants")';
+    $('#showName').on("click", function() {
+        var url = baseUrl + '?text1=' + '@Model.prizes.prize_id' + '&text2=' + $('.name p span').text()
+        location.href = url;
+    });
 </script>*@
-
 
 
 

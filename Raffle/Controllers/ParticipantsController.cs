@@ -38,7 +38,7 @@ namespace Raffle.Controllers
             db.SaveChanges();
 
 
-            var getID = (from p in db.Participants where p.display_name == "Venzon, Nino" select p.participant_id).First();
+            var getID = (from p in db.Participants where p.display_name == wname select p.participant_id).First();
 
             Participants participant = db.Participants.First(a => a.participant_id == getID);
             participant.winner_flag = true;
@@ -53,7 +53,7 @@ namespace Raffle.Controllers
                 prize_name = prize_name,
                 winner_department = "Medical Informatics",
                 winner_id = Guid.NewGuid(),
-                winner_name = "Venzon, Nino"
+                winner_name = wname
             };
 
             db.Winners.Add(winner);
@@ -66,5 +66,6 @@ namespace Raffle.Controllers
         {
             return View();
         }
+
     }
 }
