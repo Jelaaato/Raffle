@@ -13,12 +13,15 @@
           <Property Name="event_name" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="event_date" Type="date" Nullable="false" />
           <Property Name="event_location" Type="varchar" MaxLength="250" />
-          <Property Name="start_time" Type="time" Precision="7" Nullable="false" />
-          <Property Name="end_time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="start_datetime" Type="smalldatetime" Nullable="false" />
+          <Property Name="end_datetime" Type="smalldatetime" Nullable="false" />
           <Property Name="event_banner" Type="varbinary(max)" />
-          <Property Name="passcode" Type="int" Nullable="false" />
           <Property Name="delete_flag" Type="bit" />
           <Property Name="deleted_datetime" Type="datetime" />
+          <Property Name="date_created" Type="smalldatetime" />
+          <Property Name="passcode" Type="int" Nullable="false" />
+          <Property Name="starttime_ref_id" Type="uniqueidentifier" />
+          <Property Name="endtime_ref_id" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="Participants">
           <Key>
@@ -36,6 +39,7 @@
           <Property Name="registered_flag" Type="bit" />
           <Property Name="registered_datetime" Type="datetime" />
           <Property Name="display_name" Type="varchar" MaxLength="200" />
+          <Property Name="delete_flag" Type="bit" />
         </EntityType>
         <EntityType Name="Prizes">
           <Key>
@@ -76,12 +80,15 @@
           <Property Name="event_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="event_date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="event_location" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="start_time" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="end_time" Type="Time" Nullable="false" Precision="7" />
           <Property Name="event_banner" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="delete_flag" Type="Boolean" />
           <Property Name="deleted_datetime" Type="DateTime" Precision="3" />
           <Property Name="passcode" Type="Int32" Nullable="false" />
+          <Property Name="start_datetime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="end_datetime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_created" Type="DateTime" Precision="0" />
+          <Property Name="starttime_ref_id" Type="Guid" />
+          <Property Name="endtime_ref_id" Type="Guid" />
         </EntityType>
         <EntityType Name="Participants">
           <Key>
@@ -99,6 +106,7 @@
           <Property Name="registered_flag" Type="Boolean" />
           <Property Name="registered_datetime" Type="DateTime" Precision="3" />
           <Property Name="display_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="delete_flag" Type="Boolean" />
         </EntityType>
         <EntityType Name="Prizes">
           <Key>
@@ -136,13 +144,16 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Events">
               <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="endtime_ref_id" ColumnName="endtime_ref_id" />
+                <ScalarProperty Name="starttime_ref_id" ColumnName="starttime_ref_id" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="end_datetime" ColumnName="end_datetime" />
+                <ScalarProperty Name="start_datetime" ColumnName="start_datetime" />
                 <ScalarProperty Name="passcode" ColumnName="passcode" />
                 <ScalarProperty Name="event_id" ColumnName="event_id" />
                 <ScalarProperty Name="event_name" ColumnName="event_name" />
                 <ScalarProperty Name="event_date" ColumnName="event_date" />
                 <ScalarProperty Name="event_location" ColumnName="event_location" />
-                <ScalarProperty Name="start_time" ColumnName="start_time" />
-                <ScalarProperty Name="end_time" ColumnName="end_time" />
                 <ScalarProperty Name="event_banner" ColumnName="event_banner" />
                 <ScalarProperty Name="delete_flag" ColumnName="delete_flag" />
                 <ScalarProperty Name="deleted_datetime" ColumnName="deleted_datetime" />
@@ -152,6 +163,7 @@
           <EntitySetMapping Name="Participants">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Participants">
               <MappingFragment StoreEntitySet="Participants">
+                <ScalarProperty Name="delete_flag" ColumnName="delete_flag" />
                 <ScalarProperty Name="participant_id" ColumnName="participant_id" />
                 <ScalarProperty Name="event_id" ColumnName="event_id" />
                 <ScalarProperty Name="employee_number" ColumnName="employee_number" />

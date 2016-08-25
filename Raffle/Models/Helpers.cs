@@ -5,4 +5,5 @@ using System.Web;
 
 namespace Raffle.Models
 {
+   
 }

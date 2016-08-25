@@ -7,7 +7,17 @@
             @Html.TextBoxFor(a => a.prize_name, new { @class = "form-control", @placeholder = "Prize" })
             <br />
             @Html.TextBoxFor(a => a.quantity, new { @Value = "", @class = "form-control", @placeholder = "Quantity" })
-            <button class="btn btn-default">Save</button><a href="@Url.Action("LoadParticipants", "Participants")" role="button" class="btn btn-default">Continue</a>
+            <button class="btn btn-default">Save</button>
+            
+            if (Model.prize.Count() != 0)
+            {
+                <a href="@Url.Action("LoadParticipants", "Participants")" role="button" class="btn btn-default">Continue</a>
+            }
+            else
+            {
+                <button type="button" data-toggle="modal" data-target="#promptPrizeInput" class="btn btn-default">Continue</button>
+                
+            }
         }
     </div>
 </center>

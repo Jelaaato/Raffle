@@ -15,7 +15,17 @@ namespace Raffle.Controllers
 
         public ActionResult Index()
         {
-           return View (db.Events.OrderBy(e => e.event_name).ToList());
+            var events = db.Events.OrderBy(e => e.event_name).ToList();
+            if (events != null)
+            {
+                ViewBag.Message = "";
+                return View(events);
+            }
+            else
+            {
+                ViewBag.Message = "There are no events available";
+                return View();
+            }
         }
 
         public ActionResult ValidatePasscode(string name)

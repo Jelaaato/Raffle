@@ -25,16 +25,27 @@
 <div class="container-fluid events_background">
         <div>
             <center>
-                @foreach (var e in Model)
+                @if (ViewBag.Message == "")
+                { 
+                    foreach (var e in Model)
+                    {
+                        <div class="row">
+                            <a href="@Url.Action("ValidatePasscode", "Home", new { id = e.event_id, name = e.event_name })">
+                                <div class="col-lg-12" style="height:30% !important;border-bottom:5px solid white;padding-top:5%">
+                                    <span style="font-size:45px;color:black;font-weight:bolder;letter-spacing:40px;">@e.event_name</span>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+                else
                 {
                     <div class="row">
-                        <a href="@Url.Action("ValidatePasscode", "Home", new { id = e.event_id, name = e.event_name })">
-                            <div class="col-lg-12" style="height:30% !important;border-bottom:5px solid white;padding-top:5%">
-                                <span style="font-size:45px;color:black;font-weight:bolder;letter-spacing:40px;">@e.event_name</span>
-                            </div>
-                        </a>
-                    </div>
-                    }
+                        <div class="col-lg-12" style="height:30% !important;border-bottom:5px solid white;padding-top:5%">
+                            <span style="font-size:45px;color:black;font-weight:bolder;letter-spacing:40px;">@ViewBag.Message</span>
+                        </div>
+                    </div> 
+                }
         </center>
         </div>
     </div>

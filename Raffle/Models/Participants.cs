@@ -26,5 +26,6 @@ namespace Raffle.Models
         public Nullable<bool> registered_flag { get; set; }
         public Nullable<System.DateTime> registered_datetime { get; set; }
         public string display_name { get; set; }
+        public Nullable<bool> delete_flag { get; set; }
     }
 }

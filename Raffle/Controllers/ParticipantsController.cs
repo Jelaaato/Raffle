@@ -21,7 +21,7 @@ namespace Raffle.Controllers
             {
 
                 participants = (from p in db.Participants
-                                where p.event_id == id && p.winner_flag == false
+                                where p.event_id == id && p.winner_flag == null
                                 select p.display_name).ToList(),
 
                 prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id ==  id && a.raffle_flag == false).FirstOrDefault()
@@ -39,6 +39,7 @@ namespace Raffle.Controllers
 
 
             var getID = (from p in db.Participants where p.display_name == wname select p.participant_id).First();
+            var getDept = (from p in db.Participants where p.display_name == wname select p.department_name).First();
 
             Participants participant = db.Participants.First(a => a.participant_id == getID);
             participant.winner_flag = true;
@@ -51,7 +52,7 @@ namespace Raffle.Controllers
                 prize_id = prize_id,
                 participant_id = getID,
                 prize_name = prize_name,
-                winner_department = "Medical Informatics",
+                winner_department = getDept,
                 winner_id = Guid.NewGuid(),
                 winner_name = wname
             };
@@ -60,11 +61,6 @@ namespace Raffle.Controllers
             db.SaveChanges();
 
             return RedirectToAction("LoadParticipants");
-        }
-
-        public ActionResult GetWinner(string getwinner)
-        {
-            return View();
         }
 
     }
