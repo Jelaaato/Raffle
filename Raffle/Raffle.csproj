@@ -163,6 +163,7 @@
     <Content Include="Images\prize.png" />
     <Content Include="Images\raffle.png" />
     <Content Include="Images\raffle2.png" />
+    <Content Include="Images\raffle3.png" />
     <Content Include="Images\shadow.png" />
     <Content Include="JSFiles\index.js" />
     <Content Include="JSFiles\library.js" />

@@ -9,5 +9,7 @@ namespace Raffle.Models
     {
         public IEnumerable<string> participants { get; set; }
         public Prizes prizes { get; set; }
+        public Participants winner { get; set; }
+        public string winner_name { get; set; }
     }
 }

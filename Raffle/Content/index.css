@@ -4,20 +4,20 @@
     font-family:'Microsoft YaHei','WenQuanYi MicroHei',sans-serif;
 }
 
-html
+/*html
 {
     height:100%;
     width:100%;
     min-width:1140px;
     min-height:940px;
-}
+}*/
 
-body
+/*body
 {
-    /*background:url(../Images/background.jpg) no-repeat;*/
-    /*height:100%;
-    background-size:100% 100%;*/
-}
+    background:url(../Images/background.jpg) no-repeat;
+    height:100%;
+    background-size:100% 100%;
+}*/
 
 .container
 {

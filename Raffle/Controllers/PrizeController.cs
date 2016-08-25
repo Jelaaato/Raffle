@@ -19,7 +19,7 @@ namespace Raffle.Controllers
             var model = new PrizeViewModel
             {
                 prize = (from b in db.Prizes
-                        where b.event_id == id
+                        where b.event_id == id && b.raffle_flag == false
                         group b by b.prize_name
                             into grp
                             select new PrizeDTO
@@ -56,7 +56,7 @@ namespace Raffle.Controllers
                
             ModelState.Clear();
                 
-            return RedirectToAction("Prizes");
+            return RedirectToAction("Prize");
         }
 
         [HttpPost]

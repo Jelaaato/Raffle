@@ -31,7 +31,6 @@ function slotMachine(t, n) {
 //does the raffle, captures winner
 
 function drawARaffle(t, n) {
-    var winner;
     t.list.children("p").removeClass("pitch"),
     $(t.button).unbind("click").css("cursor", "default");
     var s = Math.ceil(200 * Math.random()) + 90;
@@ -39,7 +38,6 @@ function drawARaffle(t, n) {
     setTimeout(function () {
         $(t.list.children("p")[297 - s]).addClass("pitch");
         for (var i = $(t.list.children("p")[297 - s]).html(), o = $(".pitch").html(), a = n.length, c = 0; a > c; c++) o == n[c];
-        winner = 'sample string';
         setTimeout(function () {
             $(".screen span").html(i),
             $(".screen").css("display", "flex"),
@@ -57,6 +55,6 @@ function drawARaffle(t, n) {
             }).css("cursor", "pointer")
         }, 400)
     }, 15500)
-    return winner;
+
 }
 var list;
