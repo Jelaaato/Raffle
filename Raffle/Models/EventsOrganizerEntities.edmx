@@ -20,8 +20,10 @@
           <Property Name="deleted_datetime" Type="datetime" />
           <Property Name="date_created" Type="smalldatetime" />
           <Property Name="passcode" Type="int" Nullable="false" />
-          <Property Name="starttime_ref_id" Type="uniqueidentifier" />
-          <Property Name="endtime_ref_id" Type="uniqueidentifier" />
+          <Property Name="start_time" Type="time" Precision="7" />
+          <Property Name="email_address" Type="varchar" MaxLength="200" />
+          <Property Name="starttime_ref_id" Type="int" />
+          <Property Name="endtime_ref_id" Type="int" />
         </EntityType>
         <EntityType Name="Participants">
           <Key>
@@ -29,7 +31,7 @@
           </Key>
           <Property Name="participant_id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="event_id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="employee_number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="employee_number" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="last_name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="first_name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="middle_name" Type="varchar" MaxLength="100" />
@@ -49,6 +51,8 @@
           <Property Name="event_id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="prize_name" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="raffle_flag" Type="bit" Nullable="false" />
+          <Property Name="prize_qty" Type="int" Nullable="false" />
+          <Property Name="prizeout_qty" Type="int" />
         </EntityType>
         <EntityType Name="Winners">
           <Key>
@@ -87,8 +91,8 @@
           <Property Name="start_datetime" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="end_datetime" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="date_created" Type="DateTime" Precision="0" />
-          <Property Name="starttime_ref_id" Type="Guid" />
-          <Property Name="endtime_ref_id" Type="Guid" />
+          <Property Name="start_time" Type="Time" Precision="7" />
+          <Property Name="email_address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Participants">
           <Key>
@@ -96,7 +100,7 @@
           </Key>
           <Property Name="participant_id" Type="Guid" Nullable="false" />
           <Property Name="event_id" Type="Guid" Nullable="false" />
-          <Property Name="employee_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="employee_number" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="middle_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -116,6 +120,8 @@
           <Property Name="event_id" Type="Guid" Nullable="false" />
           <Property Name="prize_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="raffle_flag" Type="Boolean" Nullable="false" />
+          <Property Name="prize_qty" Type="Int32" Nullable="false" />
+          <Property Name="prizeout_qty" Type="Int32" />
         </EntityType>
         <EntityType Name="Winners">
           <Key>
@@ -144,8 +150,8 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Events">
               <MappingFragment StoreEntitySet="Events">
-                <ScalarProperty Name="endtime_ref_id" ColumnName="endtime_ref_id" />
-                <ScalarProperty Name="starttime_ref_id" ColumnName="starttime_ref_id" />
+                <ScalarProperty Name="email_address" ColumnName="email_address" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
                 <ScalarProperty Name="date_created" ColumnName="date_created" />
                 <ScalarProperty Name="end_datetime" ColumnName="end_datetime" />
                 <ScalarProperty Name="start_datetime" ColumnName="start_datetime" />
@@ -182,6 +188,8 @@
           <EntitySetMapping Name="Prizes">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Prizes">
               <MappingFragment StoreEntitySet="Prizes">
+                <ScalarProperty Name="prizeout_qty" ColumnName="prizeout_qty" />
+                <ScalarProperty Name="prize_qty" ColumnName="prize_qty" />
                 <ScalarProperty Name="prize_id" ColumnName="prize_id" />
                 <ScalarProperty Name="event_id" ColumnName="event_id" />
                 <ScalarProperty Name="prize_name" ColumnName="prize_name" />

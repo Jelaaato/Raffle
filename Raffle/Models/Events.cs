@@ -25,7 +25,7 @@ namespace Raffle.Models
         public System.DateTime start_datetime { get; set; }
         public System.DateTime end_datetime { get; set; }
         public Nullable<System.DateTime> date_created { get; set; }
-        public Nullable<System.Guid> starttime_ref_id { get; set; }
-        public Nullable<System.Guid> endtime_ref_id { get; set; }
+        public Nullable<System.TimeSpan> start_time { get; set; }
+        public string email_address { get; set; }
     }
 }

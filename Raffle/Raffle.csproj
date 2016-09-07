@@ -165,7 +165,6 @@
     <Content Include="Images\raffle2.png" />
     <Content Include="Images\raffle3.png" />
     <Content Include="Images\shadow.png" />
-    <Content Include="JSFiles\index.js" />
     <Content Include="JSFiles\library.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -227,7 +226,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EventsOrganizerEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Helpers.cs" />
     <Compile Include="Models\Participants.cs">
       <DependentUpon>EventsOrganizerEntities.tt</DependentUpon>
     </Compile>

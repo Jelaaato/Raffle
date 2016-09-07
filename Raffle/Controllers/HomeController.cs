@@ -15,10 +15,9 @@ namespace Raffle.Controllers
 
         public ActionResult Index()
         {
-            var events = db.Events.OrderBy(e => e.event_name).ToList();
+            var events = db.Events.Where(e => e.delete_flag == null).OrderBy(e => e.event_name).ToList();
             if (events != null)
             {
-                ViewBag.Message = "";
                 return View(events);
             }
             else

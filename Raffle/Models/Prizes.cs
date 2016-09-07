@@ -18,5 +18,7 @@ namespace Raffle.Models
         public System.Guid event_id { get; set; }
         public string prize_name { get; set; }
         public bool raffle_flag { get; set; }
+        public int prize_qty { get; set; }
+        public Nullable<int> prizeout_qty { get; set; }
     }
 }
