@@ -7,50 +7,58 @@
 <link href="~/Content/Site.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link href="~/Content/animate.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 <div class="container-fluid header_background">
     <div class="row">
-        <div style="height:40%;font-size:60px;font-weight:600;margin-top:auto;" class="text-center">
-            <br />
-            <span style="font-size:80px;color:white;letter-spacing:65px;">Prizes</span>
+        <div style="height:40%;margin-top:auto;" class="text-center">
+            <br /><br /><br />
+            <span style="font-size:80px;color:white;letter-spacing:50px;font-family:'Open Sans', sans-serif;text-transform:uppercase;">Prizes</span>
         </div>
     </div>
 </div>
 <br />
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-7">
             @{
                 Html.RenderPartial("_addprizes");
             }
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-5">
             <center>
-                <h4>Prizes</h4>
-                @foreach (var item in Model.prize)
-                {
-                    <h6 class="btn btn-default">@item.distinct_prize_name</h6><h6 class="btn btn-default">@item.count</h6><button type="button" data-toggle="modal" data-target="#deleteconfirmation" class="btn btn-danger btn-xs">Remove</button>
-                    <br />
-                    
-                    <div class="modal fade" id="deleteconfirmation" role="dialog" tabindex="-1">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" data-toggle="tooltip" title="Close"><span class="glyphicon glyphicon-remove"></span></button>
-                                    <h3 class="text-center">Are you sure?</h3>
-                                </div>
-                                <div class="modal-body">
-                                    @using (Html.BeginForm("Delete", "Prize", new { id = item.prize_id}, FormMethod.Post))
-                                    {
+                <br/><br/>
+                <div class="row">
+                    @foreach (var item in Model.prize)
+                    {
+                        <div class="col-lg-4">
+                            <button class="btn btn-default">@item.distinct_prize_name</button>
+                        </div>
+                        <div class="col-lg-4">
+                            <button class="btn btn-default">@(item.count - item.prizeout_count)</button>
+                        </div>
+                        <div class="col-lg-4">
+                            <button type="button" data-toggle="modal" data-target="#deleteconfirmation" class="btn btn-danger">Remove</button>
+                            <div class="modal fade" id="deleteconfirmation" role="dialog" tabindex="-1">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" data-toggle="tooltip" title="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                                            <h3 class="text-center">Are you sure?</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            @using (Html.BeginForm("Delete", "Prize", new { id = item.prize_id }, FormMethod.Post))
+                                        {
                                         <button type="submit" class="btn btn-block btn-danger">Okay</button>
-                                    }
-                                    <br />
-                                    <a href="@Url.Action("Prize")" class="btn btn-block btn-default">Cancel</a>
+                                        }
+                                            <br />
+                                            <a href="@Url.Action("Prize")" class="btn btn-block btn-default">Cancel</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                }
+                    }
+                </div>
             </center>
         </div>
     </div>

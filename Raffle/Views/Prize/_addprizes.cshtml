@@ -1,23 +1,23 @@
 ﻿@model Raffle.Models.PrizeViewModel
 
 <center>
-    <div style="width:75%">
+    <br />
+    <div style="width:60%">
         @using (Html.BeginForm("Prize", "Prize", FormMethod.Post))
         {
-            @Html.TextBoxFor(a => a.prize_name, new { @class = "form-control", @placeholder = "Prize" })
-            <br />
-            @Html.TextBoxFor(a => a.quantity, new { @Value = "", @class = "form-control", @placeholder = "Quantity" })
+            <div class="form-group">
+                <h2 style="font-family:'Open Sans', sans-serif;">Prize</h2>
+            </div>
+            @Html.TextBoxFor(a => a.prize_name, new { @class = "bottomborderonly text-center", @autofocus = "autofocus", @style = "font-size:30px;font-family:'Open Sans', sans-serif;" })
+            <br /><br /><br /><br />
+            <div class="form-group">
+                <h2 style="font-family:'Open Sans', sans-serif;">Quantity</h2>
+            </div>
+            @Html.TextBoxFor(a => a.quantity, new { @Value = "", @class = "bottomborderonly text-center", @style = "font-size:30px;font-family:'Open Sans', sans-serif;" })
+            <br /><br /><br />
             <button class="btn btn-default">Save</button>
-            
-            //if (Model.prizes.Count() != 0)
-            //{
-                <a href="@Url.Action("LoadParticipants", "Participants")" role="button" class="btn btn-default">Continue</a>
-            @*}
-            else
-            {
-                <button type="button" data-toggle="modal" data-target="#promptPrizeInput" class="btn btn-default">Continue</button>
-                
-            }*@
+            <a href="@Url.Action("LoadParticipants", "Participants")" role="button" class="btn btn-default">Continue</a>
+         
         }
     </div>
 </center>

@@ -11,3 +11,20 @@
 .removeBullet {
     list-style: none;
 }
+
+.bottomborderonly
+{
+    border:0 !important;
+    outline: 0 !important;
+    background: transparent !important;
+    border-bottom: 1px solid black !important;
+    width: 100% !important;
+}
+
+.removeButton 
+{
+    padding: 0 !important;
+    outline: none !important;
+    border: none !important;
+    background: none !important;
+}

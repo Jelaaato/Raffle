@@ -9,12 +9,13 @@
     <link href="~/Content/Site.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/animate.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 
     <div class="container-fluid header_background">
         <div class="row">
-            <div style="height:40%;font-size:60px;font-weight:600;margin-top:auto;" class="text-center">
-                <br />
-                <span style="font-size:80px;color:white;letter-spacing:50px;">@Session["eventName"].ToString()</span>
+            <div style="height:40%;margin-top:auto;" class="text-center">
+                <br /><br /><br />
+                <span style="font-size:80px;color:white;letter-spacing:50px;font-family:'Open Sans', sans-serif;text-transform:uppercase;">@Session["eventName"].ToString()</span>
             </div>
         </div>
     </div>
@@ -26,14 +27,23 @@
         <span class="removeBullet">@Html.ValidationSummary("", new { @class = "text-danger" })</span>
         @using (Html.BeginForm("ValidatePasscode", "Home", FormMethod.Post))
         {
-    <div class="form-group">
-        <h3>Enter Passcode</h3>
-    </div>
-    <div class="form-group">
-        @Html.PasswordFor(a => a.passcode, new { @class = "form-control text-center" })
-        <br />
-        <button type="submit" class="btn btn-block" style="background-color:#8EB842;">Continue</button>
-    </div>
+            <div class="form-group">
+                <h2 style="font-family:'Open Sans', sans-serif;">Enter Passcode</h2>
+            </div>
+            
+            <br />
+            
+            <div class="form-group">
+
+                @Html.PasswordFor(a => a.passcode, new { @class = "text-center bottomborderonly", @autofocus= "autofocus", @style="font-size:30px;"})
+
+                <br /><br /><br /><br />
+
+                <button type="submit" class="removeButton">
+                    <img src="~/Images/right-arrow.png" />
+                </button>
+
+            </div>
         }
     </div>
 </center>

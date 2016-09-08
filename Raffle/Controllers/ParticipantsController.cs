@@ -16,6 +16,8 @@ namespace Raffle.Controllers
         public ActionResult LoadParticipants()
         {
             var id = new Guid(Session["event"].ToString());
+            var prizeqty = from p in db.Prizes where p.event_id == id && p.raffle_flag == false select p.prize_qty;
+            var prizeout_qty = from p in db.Prizes where p.event_id == id && p.raffle_flag == false select p.prizeout_qty;
 
             ParticipantsViewModel ptcpnts = new ParticipantsViewModel
             {
@@ -25,9 +27,13 @@ namespace Raffle.Controllers
                                 select p.display_name).ToList(),
 
                 prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id ==  id && a.raffle_flag == false).FirstOrDefault()
-
-
             };
+
+            if (prizeqty == prizeout_qty)
+            {
+                ViewBag.PrizeMessage = "No prize available";
+                return View(ptcpnts);
+            }
             
             return View(ptcpnts);
         }
@@ -41,39 +47,47 @@ namespace Raffle.Controllers
 
         public ActionResult UpdateFlag(Guid prize_id, string prize_name, string wname)
         {
-            var getID = (from p in db.Participants where p.display_name == wname select p.participant_id).First();
-            var getDept = (from p in db.Participants where p.display_name == wname select p.department_name).First();
-            var id = new Guid(Session["event"].ToString());
-
-            Winners winner = new Winners()
+            try
             {
-                event_id = id,
-                prize_id = prize_id,
-                participant_id = getID,
-                prize_name = prize_name,
-                winner_department = getDept,
-                winner_id = Guid.NewGuid(),
-                winner_name = wname
-            };
+                var getID = (from p in db.Participants where p.display_name == wname select p.participant_id).First();
+                var getDept = (from p in db.Participants where p.display_name == wname select p.department_name).First();
+                var id = new Guid(Session["event"].ToString());
 
-            db.Winners.Add(winner);
-            db.SaveChanges();
+                Winners winner = new Winners()
+                {
+                    event_id = id,
+                    prize_id = prize_id,
+                    participant_id = getID,
+                    prize_name = prize_name,
+                    winner_department = getDept,
+                    winner_id = Guid.NewGuid(),
+                    winner_name = wname
+                };
 
-            var winnerCount = (from w in db.Winners where w.event_id == id && w.prize_id == prize_id select w.winner_id).Count();
-
-            if (winnerCount != 0)
-            {
-                Prizes prize = db.Prizes.First(a => a.prize_id == prize_id);
-                prize.prizeout_qty = winnerCount;
+                db.Winners.Add(winner);
                 db.SaveChanges();
+
+                var winnerCount = (from w in db.Winners where w.event_id == id && w.prize_id == prize_id select w.winner_id).Count();
+
+                if (winnerCount != 0)
+                {
+                    Prizes prize = db.Prizes.First(a => a.prize_id == prize_id);
+                    prize.prizeout_qty = winnerCount;
+                    db.SaveChanges();
+
+                    if (prize.prize_qty == prize.prizeout_qty)
+                    {
+                        prize = db.Prizes.First(a => a.prize_id == prize_id);
+                        prize.raffle_flag = true;
+                        db.SaveChanges();
+                    }
+                }
             }
-        
 
-
-            //Participants participant = db.Participants.First(a => a.participant_id == getID);
-            //participant.winner_flag = true;
-            //db.SaveChanges();
-
+            catch (Exception e)
+            {
+                throw e;
+            }
 
             return RedirectToAction("LoadParticipants");
         }

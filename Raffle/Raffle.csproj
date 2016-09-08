@@ -164,6 +164,7 @@
     <Content Include="Images\raffle.png" />
     <Content Include="Images\raffle2.png" />
     <Content Include="Images\raffle3.png" />
+    <Content Include="Images\right-arrow.png" />
     <Content Include="Images\shadow.png" />
     <Content Include="JSFiles\library.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

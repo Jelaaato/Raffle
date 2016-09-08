@@ -63,8 +63,8 @@
           <Property Name="prize_id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="prize_name" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="participant_id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="winner_name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="winner_department" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="winner_name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="winner_department" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityContainer Name="EventsOrganizerModelStoreContainer">
           <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
@@ -132,8 +132,8 @@
           <Property Name="prize_id" Type="Guid" Nullable="false" />
           <Property Name="prize_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="participant_id" Type="Guid" Nullable="false" />
-          <Property Name="winner_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="winner_department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="winner_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="winner_department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityContainer Name="EventsOrganizerEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Events" EntityType="Self.Events" />
