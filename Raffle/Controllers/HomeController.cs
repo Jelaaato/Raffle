@@ -31,6 +31,12 @@ namespace Raffle.Controllers
         public ActionResult ValidatePasscode(string name)
         {
             Session["eventName"] = name;
+
+            if (Session["eventName"] == null)
+            {
+                return RedirectToAction("Index");
+            }
+
             return View();
         }
 
@@ -45,7 +51,7 @@ namespace Raffle.Controllers
 
                 if (model.passcode == code)
                 {
-                    return RedirectToAction("Prize", "Prize");
+                    return RedirectToAction("Prizeoptions", "Prize");
                 }
                 else
                 {

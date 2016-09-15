@@ -154,27 +154,35 @@
     <Content Include="DesignerBootstrapTheme\js\main.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\raffle4.png" />
+    <Content Include="Images\Slider\6.jpg" />
     <Content Include="Images\background.jpg" />
+    <Content Include="Images\bokeh_body.jpg" />
+    <Content Include="Images\buld_body.jpg" />
     <Content Include="Images\button.png" />
+    <Content Include="Images\body.jpg" />
+    <Content Include="Images\eventwallpaper5_rockandroll.jpg" />
+    <Content Include="Images\eventwallpaper_white.jpg" />
+    <Content Include="Images\header.jpg" />
     <Content Include="Images\eventwallpaper5_rockandroll_black.jpg" />
     <Content Include="Images\eventwallpaper6.jpg" />
     <Content Include="Images\frame.png" />
     <Content Include="Images\joysticks.png" />
+    <Content Include="Images\lights_body.jpg" />
     <Content Include="Images\prize.png" />
     <Content Include="Images\raffle.png" />
     <Content Include="Images\raffle2.png" />
     <Content Include="Images\raffle3.png" />
     <Content Include="Images\right-arrow.png" />
     <Content Include="Images\shadow.png" />
+    <Content Include="Images\Slider\2.jpg" />
+    <Content Include="Images\Slider\3.jpg" />
+    <Content Include="Images\Slider\5.jpg" />
+    <Content Include="Images\Slider\slider1.jpeg" />
+    <Content Include="Images\Slider\slider2.jpg" />
+    <Content Include="Images\Slider\slider3.jpg" />
+    <Content Include="Images\Slider\slider4.jpg" />
     <Content Include="JSFiles\library.js" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
     <EntityDeploy Include="Models\EventsOrganizerEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EventsOrganizerEntities.Designer.cs</LastGenOutput>
@@ -192,6 +200,14 @@
       <DependentUpon>EventsOrganizerEntities.edmx</DependentUpon>
       <LastGenOutput>EventsOrganizerEntities.cs</LastGenOutput>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <None Include="Properties\PublishProfiles\Raffle.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -247,11 +263,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Participants\LoadParticipants.cshtml" />
     <Content Include="Views\Prize\Prize.cshtml" />
     <Content Include="Views\Prize\_addprizes.cshtml" />
     <Content Include="Views\Home\ValidatePasscode.cshtml" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Prize\PrizeOptions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

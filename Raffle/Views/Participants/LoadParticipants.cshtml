@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/JSFiles/library.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
     <script type="text/javascript">
         var users = @Html.Raw(Json.Encode(Model.participants));
         window.onload = function () {
@@ -20,11 +21,17 @@
                 putList(t.list, list)
             }, 50),
 
-         $(".screen .confirm").on("click", function () {
-             $(".prize").hide("nomal", function () {
-                 $(".screen").css("display", "none")
-             })
-         }),
+             $(".screen .confirm").on("click", function () {
+                 $(".prize").hide("nomal", function () {
+                     $(".screen").css("display", "none")
+                 })
+             }),
+
+            $(".screen .void").on("click", function () {
+                $(".prize").hide("nomal", function () {
+                    $(".screen").css("display", "none")
+                })
+            }),
 
             $(t.button).on("click", function () {
              animateButton($(t.button)), t.joysticks.addClass("joysticksAnimate"), setTimeout(function () {
@@ -39,18 +46,30 @@
     <link href="~/Content/index.css" rel="stylesheet" />
     <link href="~/Content/library.css" rel="stylesheet" />
 
-    <div class="container-fluid header_background">
+    @*<div class="container-fluid header_background">
         <div class="row">
             <div style="height:40%;font-size:60px;font-weight:600;margin-top:auto;" class="text-center">
                 <br />
-                    <span style="font-size:80px;color:white;letter-spacing:50px;">@Model.prizes.prize_name</span>
+                    <span style="font-size:80px;color:black;letter-spacing:50px;text-shadow:5px 5px white;font-family:'Open Sans', sans-serif;">@Model.prizes.prize_name</span>
             </div>
         </div>
-    </div>
+    </div>*@
 
-<img src="@Url.Action("LoadEventBanner","Participants")" />
+
    
-<div class="slotMachineContainer"></div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="col-lg-4" style="height:100%;border-right:5px solid black;">
+            <img src="@Url.Action("LoadEventBanner","Participants")" style="width:100%;"/>
+            <br />
+            @Model.prizes.prize_name
+        </div>
+        <div class="col-lg-8">
+            <div class="slotMachineContainer"></div>
+        </div>
+    </div>
+</div>
+
        
     <div class="screen">
         <div class="prize">
@@ -59,7 +78,10 @@
                 <p><span></span></p>
             </div>
             <a id="raffleAction" href="#" class="confirm">
-                Raffle Again
+                Confirm
+            </a>
+            <a href="#" class="void">
+                Void
             </a>
         </div>
     </div>

@@ -1,12 +1,12 @@
-﻿.header_background {
-    background: url('../Images/eventwallpaper5_rockandroll_black.jpg') no-repeat center;
+﻿/*.header_background {
+    background: url('../Images/Slider/slider4.jpg') no-repeat center;
     background-size: cover;
-}
+}*/
 
-.events_background {
-    background: url('../Images/eventwallpaper6.jpg') no-repeat center center fixed;
+/*.events_background {
+    background: url('../Images/body.jpg') no-repeat center center fixed;
     background-size: cover;
-}
+}*/
 
 .removeBullet {
     list-style: none;
@@ -27,4 +27,85 @@
     outline: none !important;
     border: none !important;
     background: none !important;
+}
+
+.headertext 
+{
+    position: absolute;
+    top: 60px;
+    z-index:1;
+    font-size:80px;
+    color:white;
+    letter-spacing:50px;
+    font-family:'Open Sans', sans-serif;
+    text-transform:uppercase;
+    /*text-shadow:5px 5px black;*/
+    width:100%;
+}
+
+.carousel .item
+{
+    min-height: 400px !important;
+    height:400px !important;
+    width:100% !important;
+}
+
+.slider1 
+{
+    width: 100%;
+    height:400px;
+    background: url('../Images/Slider/3.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.slider2 
+{
+    width: 100%;
+    height:400px;
+    background: url('../Images/Slider/2.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.slider3
+{
+    width: 100%;
+    height:400px;
+    background: url('../Images/Slider/6.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.slider4
+{
+    width: 100%;
+    height:400px;
+    background: url('../Images//Slider/7.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.carouselFade .carousel-inner .item
+{
+    transition-property: opacity;
+}
+
+.item,
+.active.left,
+.active.right 
+{
+   opacity: 0.6;
+}
+
+.active,
+.next.left,
+.prev.right 
+{
+   opacity: 1;
+}
+
+.next,
+.prev,
+.active.left,
+.active.right 
+{
+   left: 0;
+   transform: translate3d(0, 0, 0);
 }

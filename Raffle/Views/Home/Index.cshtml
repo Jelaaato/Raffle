@@ -6,49 +6,67 @@
     ViewBag.Title = "Choose an Event";
 }
 
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/Site.css" rel="stylesheet" />
-<link href="~/Content/bootstrap.css" rel="stylesheet" />
-<link href="~/Content/buttons.css" rel="stylesheet" />
-<link href="~/Content/animate.css" rel="stylesheet" />
+@*<link href="~/Content/buttons.css" rel="stylesheet" />*@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 
-<div class="container-fluid header_background">
+@*<div class="container-fluid header_background">
     <div class="row">
         <div style="height:40%;margin-top:auto;" class="text-center">
             <br /><br /><br />
-            <span style="font-size:80px;color:white;letter-spacing:50px;font-family:'Open Sans', sans-serif;text-transform:uppercase;">Choose an Event</span>
+            <span class="headertext">Choose an Event</span>
         </div>
     </div>
+</div>*@
+
+<div class="headertext text-center">
+    Choose an Event
 </div>
 
-<br />
 
-<div class="container-fluid events_background">
-        <div>
-            <center>
-                    @*@if (Model)
-                    {*@
-                        @foreach (var e in Model)
-                        {
-                            <div class="row">
-                                <a href="@Url.Action("ValidatePasscode", "Home", new { id = e.event_id, name = e.event_name })">
-                                    <div class="col-lg-12" style="height:30% !important;border-bottom:5px solid white;padding-top:5%">
-                                        <span style="font-size:45px;color:black;font-weight:bolder;letter-spacing:40px;font-family:'Open Sans', sans-serif;">@e.event_name</span>
-                                    </div>
-                                </a>
-                            </div>
-                        }
-                    @*}
-                    else
-                    {
-                        <div class="row">
-                            <div class="col-lg-12" style="height:30% !important;border-bottom:5px solid white;padding-top:5%">
-                                <span style="font-size:45px;color:black;font-weight:bolder;letter-spacing:40px;">@ViewBag.Message</span>
-                            </div>
-                        </div>
-                    }*@
-            </center>
+<div id="carouselHeader" class="carousel slide carouselFade" data-ride="carousel" data-interval="3000">
+   <div class="carousel-inner" role="listbox">
+        <div class="item active">
+             <div class="slider1"></div>
         </div>
+        <div class="item">
+             <div class="slider2"></div>
+        </div>
+        <div class="item">
+             <div class="slider3"></div>
+        </div>
+        @*<div class="item">
+             <div class="slider4"></div>
+        </div>*@
+   </div>
 </div>
 
+<a class="left carousel-control hidden" href="#carouselHeader" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+</a>
+
+<a class="right carousel-control hidden" href="#carouselHeader" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+</a>
+
+<div class="container-fluid">
+            <center>
+                @foreach (var e in Model)
+                   {
+                       <div class="row">
+                          <a href="@Url.Action("ValidatePasscode", "Home", new { id = e.event_id, name = e.event_name })">
+                              <div class="col-lg-12" style="height:30% !important;border-bottom:5px solid black;padding-top:5%">
+                                   <span style="font-size:45px;color:Black;font-weight:bolder;letter-spacing:40px;font-family:'Open Sans', sans-serif;text-transform:uppercase;">@e.event_name</span>
+                              </div>
+                          </a>
+                       </div>
+                    }
+            </center>
+</div>
+
+
+<script src="~/Scripts/jquery-1.9.1.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>

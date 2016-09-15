@@ -13,36 +13,49 @@ namespace Raffle.Controllers
         private EventsOrganizerEntities db = new EventsOrganizerEntities();
 
         // GET: Participants
-        public ActionResult LoadParticipants()
+        public ActionResult LoadParticipants(Guid? prize_id)
         {
-            var id = new Guid(Session["event"].ToString());
-            var prizeqty = from p in db.Prizes where p.event_id == id && p.raffle_flag == false select p.prize_qty;
-            var prizeout_qty = from p in db.Prizes where p.event_id == id && p.raffle_flag == false select p.prizeout_qty;
-
-            ParticipantsViewModel ptcpnts = new ParticipantsViewModel
+            if (Session["event"] == null)
             {
-
-                participants = (from p in db.Participants
-                                where p.event_id == id && p.winner_flag == null && p.delete_flag == null
-                                select p.display_name).ToList(),
-
-                prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id ==  id && a.raffle_flag == false).FirstOrDefault()
-            };
-
-            if (prizeqty == prizeout_qty)
+                return RedirectToAction("Index", "Home");
+            }
+            else
             {
-                ViewBag.PrizeMessage = "No prize available";
+                var id = new Guid(Session["event"].ToString());
+                var prizeqty = from p in db.Prizes where p.event_id == id && p.raffle_flag == false select p.prize_qty;
+                var prizeout_qty = from p in db.Prizes where p.event_id == id && p.raffle_flag == false select p.prizeout_qty;
+
+                ParticipantsViewModel ptcpnts = new ParticipantsViewModel
+                {
+                    participants = (from p in db.Participants
+                                    where p.event_id == id && p.winner_flag == null && p.delete_flag == null
+                                    select p.display_name).ToList(),
+
+                    prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
+                };
+
+                if (prizeqty == prizeout_qty)
+                {
+                    ViewBag.PrizeMessage = "No prize available";
+                    return View(ptcpnts);
+                }
+
                 return View(ptcpnts);
             }
-            
-            return View(ptcpnts);
         }
 
         public ActionResult LoadEventBanner()
         {
-            var id = new Guid(Session["event"].ToString());
-            byte[] eventBanner = db.Events.Where(e => e.event_id == id).Select(e => e.event_banner).First();
-            return File(eventBanner, "image/jpeg");
+            if (Session["event"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                var id = new Guid(Session["event"].ToString());
+                byte[] eventBanner = db.Events.Where(e => e.event_id == id).Select(e => e.event_banner).First();
+                return File(eventBanner, "image/jpeg");
+            }
         }
 
         public ActionResult UpdateFlag(Guid prize_id, string prize_name, string wname)
