@@ -19,5 +19,6 @@ namespace Raffle.Models
         public string distinct_prize_name { get; set; }
         public int count { get; set; }
         public int? prizeout_count { get; set; }
+        public int prize_count { get; set; }
     }
 }

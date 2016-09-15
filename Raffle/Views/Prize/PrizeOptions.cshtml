@@ -1,0 +1,40 @@
+﻿@model Raffle.Models.PrizeViewModel
+
+@{
+    Layout = null;
+}
+
+<meta name="viewport" content="width=device-width" />
+<title>Options</title>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/animate.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+
+<center>
+    <a href="@Url.Action("Prize", "Prize")" class="btn btn-default" role="button">Add Prizes</a>
+    <a href="#prizesModal" class="btn btn-default" role="button" data-toggle="modal">View Prizes</a>
+    <div class="modal" id="prizesModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" data-toggle="tooltip" title="Close"><span class="glyphicon glyphicon-remove"></span></button>
+                    <h3>Select a prize to raffle ...</h3>
+                </div>
+                <div class="modal-body">
+                    @foreach (var item in Model.prize)
+                    {
+                            <a href="@Url.Action("LoadParticipants", "Participants", new { prize_id = item.prize_id })"><span class="btn btn-default">@item.distinct_prize_name</span></a>
+                            <button class="btn btn-default">@(item.count - item.prizeout_count)</button>
+                            <br />
+                            <br />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+
+
+<script src="~/Scripts/jquery-1.9.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>

@@ -155,6 +155,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\raffle4.png" />
+    <Content Include="Images\raffle6.png" />
     <Content Include="Images\Slider\6.jpg" />
     <Content Include="Images\background.jpg" />
     <Content Include="Images\bokeh_body.jpg" />
@@ -265,7 +266,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Participants\LoadParticipants.cshtml" />
     <Content Include="Views\Prize\Prize.cshtml" />
-    <Content Include="Views\Prize\_addprizes.cshtml" />
     <Content Include="Views\Home\ValidatePasscode.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Prize\PrizeOptions.cshtml" />

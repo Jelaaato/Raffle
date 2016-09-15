@@ -41,13 +41,15 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" data-toggle="tooltip" title="Close"><span class="glyphicon glyphicon-remove"></span></button>
-                                    <h3>Prizes</h3>
+                                    <h3>Select a prize to raffle ...</h3>
                                 </div>
                                 <div class="modal-body">
                                     @foreach (var item in Model.prize)
                                     {
                                         <a href="@Url.Action("LoadParticipants", "Participants", new { prize_id = item.prize_id })"><span class="btn btn-default">@item.distinct_prize_name</span></a>
                                         <button class="btn btn-default">@(item.count - item.prizeout_count)</button>
+                                        <br />
+                                        <br />
                                     }
                                 </div>
                             </div>

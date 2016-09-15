@@ -25,11 +25,11 @@
 
 .slotMachine
 {
-    width:940px;
-    height:600px;
+    width:996px;
+    height:672px;
     margin:0 auto;
     position:relative;
-    background:url(../Images/raffle4.png) no-repeat;
+    background:url(../Images/raffle6.png) no-repeat;
 }
 
 .slotMachine .winning
