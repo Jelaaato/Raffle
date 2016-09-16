@@ -34,11 +34,11 @@
 
 .slotMachine .winning
 {
-    width:464px;
-    height:251px;
+    width:730px;
+    height:500px;
     position:absolute;
-    top:231px;
-    left:207px;
+    top:85px;
+    left:90px;
     overflow:hidden;
     cursor:default;
 }
@@ -51,7 +51,7 @@
 
 .slotMachine .frame
 {
-    width:525px;
+    width:800px;
     height:57px;
     background:url(../Images/frame.png) no-repeat;
     position:absolute;
@@ -71,8 +71,8 @@
 .slotMachine .joysticks
 {
     position:absolute;
-    top:297px;
-    left:730px;
+    top:195px;
+    left:890px;
 }
 
 .slotMachine .joysticks.joysticksAnimate
@@ -96,7 +96,7 @@
     text-align:center;
     color:#fff;
     padding:0 auto;
-    width:464px;
+    width:730px;
     margin:10px 0;
 }
 

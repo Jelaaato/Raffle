@@ -154,6 +154,8 @@
     <Content Include="DesignerBootstrapTheme\js\main.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\button1.png" />
+    <Content Include="Images\joysticks1.png" />
     <Content Include="Images\raffle4.png" />
     <Content Include="Images\raffle6.png" />
     <Content Include="Images\Slider\6.jpg" />

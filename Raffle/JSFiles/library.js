@@ -9,7 +9,7 @@ function drawARaffle(t) {
 //displays slot machine
 function creatSlotMachine(t) {
     var n, s, i, o, a, c; !function () {
-        n = $("<div>", { "class": "slotMachine" }).appendTo(t), s = $("<div>", { "class": "winning" }).appendTo(n), i = $("<div>", { "class": "list" }).appendTo(s), o = $("<div>", { "class": "frame" }).appendTo(n), c = $("<img>", { "class": "joysticks", src: "/Images/joysticks.png" }).appendTo(n), a = $("<img>", { "class": "button", src: "/Images/button.png" }).appendTo(n)
+        n = $("<div>", { "class": "slotMachine" }).appendTo(t), s = $("<div>", { "class": "winning" }).appendTo(n), i = $("<div>", { "class": "list" }).appendTo(s), o = $("<div>", { "class": "frame" }).appendTo(n), c = $("<img>", { "class": "joysticks", src: "/Images/joysticks1.png" }).appendTo(n), a = $("<img>", { "class": "button", src: "/Images/button1.png" }).appendTo(n)
     }(); var e = {}; return e.slotMachine = n, e.winning = s, e.list = i, e.frame = o, e.button = a, e.joysticks = c, e
 }
 
