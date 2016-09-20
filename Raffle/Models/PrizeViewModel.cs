@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,7 +9,9 @@ namespace Raffle.Models
     public class PrizeViewModel
     {
         public Guid event_id { get; set; }
+        [Required]
         public string prize_name { get; set; }
+        [Required]
         public int quantity { get; set; }
         public IQueryable<PrizeDTO> prize { get; set; }
     }

@@ -2,25 +2,28 @@
            
 @{
     Layout = null;
+    ViewBag.Title = "Validate";
 }
 
-    <meta name="viewport" content="width=device-width" />
-    <title>ValidatePasscode</title>
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/animate.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@ViewBag.Title</title>
 
-    <div class="container-fluid header_background">
-        <div class="row">
-            <div style="height:40%;margin-top:auto;" class="text-center">
-                <br /><br /><br />
-                <span style="font-size:80px;color:black;letter-spacing:50px;font-family:'Open Sans', sans-serif;text-transform:uppercase;text-shadow:5px 5px white">@Session["eventName"].ToString()</span>
-            </div>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+@*<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">*@
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div style="height:40%;margin-top:auto;" class="text-center">
+            <br /><br /><br />
+            <span style="font-size:80px;color:black;letter-spacing:50px;font-family:'Open Sans', sans-serif;text-transform:uppercase;text-shadow:5px 5px white">@Session["eventName"].ToString()</span>
         </div>
     </div>
+</div>
     
-    <br />
+<br />
 
 <center>
     <div style="width:25%;margin-top:5%;">
@@ -35,7 +38,7 @@
             
             <div class="form-group">
 
-                @Html.PasswordFor(a => a.passcode, new { @class = "text-center bottomborderonly", @autofocus= "autofocus", @style="font-size:30px;"})
+                @Html.PasswordFor(a => a.passcode, new { @class = "text-center bottomBorderOnly", @autofocus= "autofocus", @style="font-size:30px;"})
 
                 <br /><br /><br /><br />
 
@@ -47,6 +50,9 @@
         }
     </div>
 </center>
+
+<script src="~/Scripts/jquery-1.9.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
 
 
 

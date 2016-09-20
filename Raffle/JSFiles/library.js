@@ -9,18 +9,18 @@ function drawARaffle(t) {
 //displays slot machine
 function creatSlotMachine(t) {
     var n, s, i, o, a, c; !function () {
-        n = $("<div>", { "class": "slotMachine" }).appendTo(t), s = $("<div>", { "class": "winning" }).appendTo(n), i = $("<div>", { "class": "list" }).appendTo(s), o = $("<div>", { "class": "frame" }).appendTo(n), c = $("<img>", { "class": "joysticks", src: "/Images/joysticks1.png" }).appendTo(n), a = $("<img>", { "class": "button", src: "/Images/button1.png" }).appendTo(n)
+        n = $("<div>", { "class": "slotMachine" }).appendTo(t), s = $("<div>", { "class": "winning" }).appendTo(n), i = $("<div>", { "class": "list" }).appendTo(s), o = $("<div>", { "class": "frame" }).appendTo(n), c = $("<img>", { "class": "joysticks", src: "/Images/joysticks.png" }).appendTo(n), a = $("<img>", { "class": "button", src: "/Images/button1.png" }).appendTo(n)
     }(); var e = {}; return e.slotMachine = n, e.winning = s, e.list = i, e.frame = o, e.button = a, e.joysticks = c, e
 }
 
 //enables the joystick to be pressed
 function animateButton(t) {
-    t.animate({ top: "305px" }, 250, "swing", function () { t.animate({ top: "259px" }, 1600, "linear") })
+    t.animate({ top: "255px" }, 450, "swing", function () { t.animate({ top: "178px" }, 800, "linear") })
 }
 
 // loads list of participants
 function putList(t, n) {
-    for (var s = 0; 300 > s; s++) { var i = n.shift(); n.push(i), $("<p>", { "class": "candidate", text: i }).appendTo(t) }
+    for (var s = 0; 302 > s; s++) { var i = n.shift(); n.push(i), $("<p>", { "class": "candidate", text: i }).appendTo(t) }
 }
 
 //enables shuffling

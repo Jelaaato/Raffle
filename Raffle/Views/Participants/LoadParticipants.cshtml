@@ -1,90 +1,93 @@
 ﻿@using Raffle.Models;
 @model Raffle.Models.ParticipantsViewModel
+
 @{
     Layout = null;
     ViewBag.Title = "Raffle";
 }
 
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@ViewBag.Title</title>
+<script src="~/Scripts/jquery-1.9.1.min.js"></script>
+<script src="~/JSFiles/library.js"></script>
+<script type="text/javascript">
+    var users = @Html.Raw(Json.Encode(Model.participants));
+    window.onload = function () {
+        list = users;
+        var t = creatSlotMachine($(".slotMachineContainer")[0], list);
 
-    <title>@ViewBag.Title</title>
-    <meta charset="UTF-8">
-    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
-    <script src="~/JSFiles/library.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
-    <script type="text/javascript">
-        var users = @Html.Raw(Json.Encode(Model.participants));
-        window.onload = function () {
-            list = users;
-            var t = creatSlotMachine($(".slotMachineContainer")[0], list);
+        setTimeout(function () {
+            putList(t.list, list)
+        }, 50),
 
-            setTimeout(function () {
-                putList(t.list, list)
-            }, 50),
-
-             $(".screen .confirm").on("click", function () {
-                 $(".prize").hide("nomal", function () {
-                     $(".screen").css("display", "none")
-                 })
-             }),
-
-            $(".screen .void").on("click", function () {
+            $(".screen .confirm").on("click", function () {
                 $(".prize").hide("nomal", function () {
                     $(".screen").css("display", "none")
                 })
             }),
 
-            $(t.button).on("click", function () {
-             animateButton($(t.button)), t.joysticks.addClass("joysticksAnimate"), setTimeout(function () {
-                 t.joysticks.removeClass("joysticksAnimate")
-             }, 1850),
-                drawARaffle(t, list)
-            }).css("cursor", "pointer")
-        };
-    </script>
-    <link href="~/Content/Site.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/index.css" rel="stylesheet" />
-    <link href="~/Content/library.css" rel="stylesheet" />
+        $(".screen .void").on("click", function () {
+            $(".prize").hide("nomal", function () {
+                $(".screen").css("display", "none")
+            })
+        }),
 
-    @*<div class="container-fluid header_background">
-        <div class="row">
-            <div style="height:40%;font-size:60px;font-weight:600;margin-top:auto;" class="text-center">
-                <br />
-                    <span style="font-size:80px;color:black;letter-spacing:50px;text-shadow:5px 5px white;font-family:'Open Sans', sans-serif;">@Model.prizes.prize_name</span>
-            </div>
-        </div>
-    </div>*@
+        $(t.button).on("click", function () {
+            animateButton($(t.button)), t.joysticks.addClass("joysticksAnimate"), setTimeout(function () {
+                t.joysticks.removeClass("joysticksAnimate")
+            }, 1850),
+            drawARaffle(t, list)
+        }).css("cursor", "pointer")
+    };
+</script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/index.css" rel="stylesheet" />
+<link href="~/Content/library.css" rel="stylesheet" />
+@*<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">*@
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
 
-
-   
-<div class="row">
-    <div class="col-lg-12">
-        <div class="col-lg-2" style="height:100%;border-right:5px solid black;">
-            <img src="@Url.Action("LoadEventBanner","Participants")" style="width:100%;"/>
+<div class="row removeMargin">
+    <div class="col-lg-12 removeMargin">
+        <div class="col-lg-3 removeMargin" style="height:100%;">
+            <img src="@Url.Action("LoadEventBanner","Participants")" style="width:100%;height:15%;" />
             <br />
-            @Model.prizes.prize_name
+            <center>
+                @Model.prizes.prize_name
+                <br />
+                @Model.prizes.prizeout_qty out of @Model.prizes.prize_qty
+                <br />
+            </center>
+            @Html.Action("DisplayWinner", "Participants")
         </div>
-        <div class="col-lg-10 events_background">
-            <div class="slotMachineContainer"></div>
+        <div class="col-lg-9 events_background">
+            <center>
+                <div class="slotMachineContainer"></div>
+            </center>
         </div>
     </div>
 </div>
 
+
        
-    <div class="screen">
-        <div class="prize">
-            <div class="name">
-                <p>&nbsp;</p>
-                <p><span></span></p>
-            </div>
-            <a id="raffleAction" href="#" class="confirm">
-                Confirm
-            </a>
-            <a href="#" class="void">
-                Void
-            </a>
+<div class="screen">
+    <div class="prize">
+        <div class="name">
+            <p>&nbsp;</p>
+            <p><span></span></p>
         </div>
+        <a id="raffleAction" href="#" class="confirm">
+            Confirm
+        </a>
+        <a href="#" class="void">
+            Void
+        </a>
     </div>
+</div>
+
+
+<script src="~/Scripts/bootstrap.min.js"></script>
 
 <script>
     var baseUrl = '@Url.Action("UpdateFlag", "Participants")';
@@ -93,6 +96,7 @@
         location.href = url;
     });
 </script>
+
 
 
 

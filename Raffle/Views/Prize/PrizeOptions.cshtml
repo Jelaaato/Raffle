@@ -2,14 +2,17 @@
 
 @{
     Layout = null;
+    ViewBag.Title = "Options";
 }
 
-<meta name="viewport" content="width=device-width" />
-<title>Options</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@ViewBag.Title</title>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/Site.css" rel="stylesheet" />
-<link href="~/Content/bootstrap.css" rel="stylesheet" />
-<link href="~/Content/animate.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+@*<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">*@
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
 
 <center>
     <a href="@Url.Action("Prize", "Prize")" class="btn btn-default" role="button">Add Prizes</a>
@@ -24,7 +27,7 @@
                 <div class="modal-body">
                     @foreach (var item in Model.prize)
                     {
-                            <a href="@Url.Action("LoadParticipants", "Participants", new { prize_id = item.prize_id })"><span class="btn btn-default">@item.distinct_prize_name</span></a>
+                            <a href="@Url.Action("CapturePrizeId", "Participants", new { prize_id = item.prize_id })"><span class="btn btn-default">@item.distinct_prize_name</span></a>
                             <button class="btn btn-default">@(item.count - item.prizeout_count)</button>
                             <br />
                             <br />
@@ -34,7 +37,6 @@
         </div>
     </div>
 </center>
-
 
 <script src="~/Scripts/jquery-1.9.1.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>

@@ -23,8 +23,8 @@ namespace Raffle.Controllers
             }
             else
             {
-                ViewBag.Message = "There are no events available";
-                return View();
+                ViewBag.Message = "There are no events available.";
+                return View(events);
             }
         }
 

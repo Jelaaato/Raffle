@@ -1,0 +1,34 @@
+﻿@model PagedList.IPagedList<Raffle.Models.Winners>
+@using PagedList.Mvc;
+@using PagedList;
+
+
+<div id="wrapper">
+
+    <h4 class="text-center">Winners</h4>
+    <br />
+    @foreach (var w in Model)
+    { 
+        <div class="text-center">
+            <h5>
+                <b>@w.winner_name</b>
+                <br />
+                @w.winner_department
+                <br />
+                @w.prize_name
+            </h5>
+        </div>
+        <br />
+    }
+
+    <center>
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("LoadParticipants", new { page, currentfilter = ViewBag.CurrentFilter }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+        new AjaxOptions()
+        {
+            HttpMethod = "GET",
+            UpdateTargetId = "wrapper"
+        }))
+    </center>
+
+</div>

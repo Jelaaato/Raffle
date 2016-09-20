@@ -1,13 +1,18 @@
 ﻿@model Raffle.Models.PrizeViewModel
 @{
     Layout = null;
-    ViewBag.Title = "LoadPrizes";
+    ViewBag.Title = "Prize";
 }
 
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@ViewBag.Title</title>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/Site.css" rel="stylesheet" />
-<link href="~/Content/bootstrap.css" rel="stylesheet" />
-<link href="~/Content/animate.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+@*<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">*@
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+
 <div class="container-fluid header_background">
     <div class="row">
         <div style="height:40%;margin-top:auto;" class="text-center">
@@ -16,25 +21,30 @@
         </div>
     </div>
 </div>
+
 <br />
+
 <div class="container-fluid">
     <div class="row">
         <center>
             <br />
             <div style="width:60%">
+                <span class="removeBullet">@Html.ValidationSummary("", new { @class = "text-danger" })</span>
                 @using (Html.BeginForm("Prize", "Prize", FormMethod.Post))
                 {
                     <div class="form-group">
                         <h2 style="font-family:'Open Sans', sans-serif;">Prize</h2>
                     </div>
-                    @Html.TextBoxFor(a => a.prize_name, new { @class = "bottomborderonly text-center", @autofocus = "autofocus", @style = "font-size:30px;font-family:'Open Sans', sans-serif;" })
+                    @Html.TextBoxFor(a => a.prize_name, new { @class = "bottomBorderOnly text-center", @autofocus = "autofocus", @style = "font-size:30px;font-family:'Open Sans', sans-serif;" })
                     <br /><br /><br /><br />
                     <div class="form-group">
                         <h2 style="font-family:'Open Sans', sans-serif;">Quantity</h2>
                     </div>
-                    @Html.TextBoxFor(a => a.quantity, new { @Value = "", @class = "bottomborderonly text-center", @style = "font-size:30px;font-family:'Open Sans', sans-serif;" })
+                    @Html.TextBoxFor(a => a.quantity, new { @Value = "", @class = "bottomBorderOnly text-center", @style = "font-size:30px;font-family:'Open Sans', sans-serif;" })
                     <br /><br /><br />
                     <button class="btn btn-default">Save</button>
+                    
+                    
                     <a href="#prizesModal" class="btn btn-default" role="button" data-toggle="modal">View Prizes</a>
                     <div class="modal" id="prizesModal" role="dialog">
                         <div class="modal-dialog">
@@ -46,7 +56,7 @@
                                 <div class="modal-body">
                                     @foreach (var item in Model.prize)
                                     {
-                                        <a href="@Url.Action("LoadParticipants", "Participants", new { prize_id = item.prize_id })"><span class="btn btn-default">@item.distinct_prize_name</span></a>
+                                        <a href="@Url.Action("CapturePrizeId", "Participants", new { prize_id = item.prize_id })"><span class="btn btn-default">@item.distinct_prize_name</span></a>
                                         <button class="btn btn-default">@(item.count - item.prizeout_count)</button>
                                         <br />
                                         <br />
@@ -61,8 +71,7 @@
         </center>
     </div>
 </div>
+
 <script src="~/Scripts/jquery-1.9.1.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
-
-
 

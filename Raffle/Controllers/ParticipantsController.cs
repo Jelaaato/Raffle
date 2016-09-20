@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 namespace Raffle.Controllers
 {
@@ -13,8 +15,9 @@ namespace Raffle.Controllers
         private EventsOrganizerEntities db = new EventsOrganizerEntities();
 
         // GET: Participants
-        public ActionResult LoadParticipants(Guid? prize_id)
+        public ActionResult LoadParticipants()
         {
+
             if (Session["event"] == null)
             {
                 return RedirectToAction("Index", "Home");
@@ -22,8 +25,7 @@ namespace Raffle.Controllers
             else
             {
                 var id = new Guid(Session["event"].ToString());
-                var prizeqty = from p in db.Prizes where p.event_id == id && p.raffle_flag == false select p.prize_qty;
-                var prizeout_qty = from p in db.Prizes where p.event_id == id && p.raffle_flag == false select p.prizeout_qty;
+                var prize_id = new Guid(Session["prizeId"].ToString());
 
                 ParticipantsViewModel ptcpnts = new ParticipantsViewModel
                 {
@@ -34,13 +36,16 @@ namespace Raffle.Controllers
                     prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
                 };
 
-                if (prizeqty == prizeout_qty)
+                if (ptcpnts.prizes == null)
                 {
-                    ViewBag.PrizeMessage = "No prize available";
+                    return RedirectToAction("PrizeOptions", "Prize");
+                }
+                else
+                {
                     return View(ptcpnts);
                 }
 
-                return View(ptcpnts);
+              
             }
         }
 
@@ -80,6 +85,10 @@ namespace Raffle.Controllers
                 db.Winners.Add(winner);
                 db.SaveChanges();
 
+                Participants participant = db.Participants.First(a => a.participant_id == getID);
+                participant.winner_flag = true;
+                db.SaveChanges();
+
                 var winnerCount = (from w in db.Winners where w.event_id == id && w.prize_id == prize_id select w.winner_id).Count();
 
                 if (winnerCount != 0)
@@ -105,5 +114,23 @@ namespace Raffle.Controllers
             return RedirectToAction("LoadParticipants");
         }
 
+        public ActionResult CapturePrizeId(Guid? prize_id)
+        {
+            Session["prizeId"] = prize_id;
+            return RedirectToAction("LoadParticipants");
+        }
+
+        public ActionResult DisplayWinner(int? page, string currentfilter)
+        {
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            var id = new Guid(Session["event"].ToString());
+            ViewBag.CurrentFilter = id;
+            var winners = db.Winners.Where(w => w.event_id == id).OrderBy(w => w.winner_name).ToPagedList(pageNumber, pageSize);
+
+            return PartialView("_DisplayWinner", winners);
+        }
     }
+
 }

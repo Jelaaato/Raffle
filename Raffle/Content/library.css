@@ -29,7 +29,7 @@
     height:672px;
     margin:0 auto;
     position:relative;
-    background:url(../Images/raffle6.png) no-repeat;
+    background:url(../Images/raffle.png) no-repeat;
 }
 
 .slotMachine .winning
@@ -52,27 +52,27 @@
 .slotMachine .frame
 {
     width:800px;
-    height:57px;
-    background:url(../Images/frame.png) no-repeat;
+    height:90px;
+    background:url(../Images/frame1.png) no-repeat;
     position:absolute;
-    top:330px;
-    left:179px;
+    top:282px;
+    left:56px;
 }
 
 .slotMachine .button
 {
-    width:60px;
-    height:60px;
+    width:80px;
+    height:80px;
     position:absolute;
-    top:259px;
-    left:717px;
+    top:178px;
+    left:878px;
 }
 
 .slotMachine .joysticks
 {
     position:absolute;
-    top:195px;
-    left:890px;
+    top:218px;
+    left:880px;
 }
 
 .slotMachine .joysticks.joysticksAnimate
@@ -135,7 +135,7 @@
 @-webkit-keyframes joysticksAnimate
 {
     0% {-webkit-transform:rotateX(0deg)}
-    20% {-webkit-transform:rotateX(60deg)}
+    20% {-webkit-transform:rotateX(90deg)}
     100% {-webkit-transform:rotateX(0deg)}
 
 }
@@ -143,21 +143,21 @@
 @-o-keyframes joysticksAnimate
 {
     0%{-o-transform:rotateX(0deg)}
-    20%{-o-transform:rotateX(60deg)}
+    20%{-o-transform:rotateX(90deg)}
     100%{-o-transform:rotateX(0deg)}
 }
 
 @-moz-keyframes joysticksAnimate
 {
     0%{-moz-transform:rotateX(0deg)}
-    20%{-moz-transform:rotateX(60deg)}
+    20%{-moz-transform:rotateX(90deg)}
     100%{-moz-transform:rotateX(0deg)}
 }
 
 @keyframes joysticksAnimate
 {
     0%{transform:rotateX(0deg)}
-    20%{transform:rotateX(60deg)}
+    20%{transform:rotateX(90deg)}
     100%{transform:rotateX(0deg)}
 }
 
@@ -211,20 +211,21 @@
     left:0;
     width:100%;
     height:100%;
-    background-color:rgba(0,0,0,.5);
+    background-color:rgba(0,0,0,.8);
     z-index:9999;
 
 }
 .screen .prize
 {
-    width:693px;
-    height:328px;
-    background:url(../Images/prize.png) no-repeat;
+    width:1055px;
+    height:500px;
+    background:url(../Images/prize2.png) no-repeat;
     position:absolute;
-    top:40%;
+    top:50%;
     left:50%;
-    margin-left:-346.5px;
-    margin-top:-50px;display:none
+    transform:translate(-50%,-50%);
+    /*margin-left:-346.5px;
+    margin-top:-50px;display:none*/
 
 }
 
@@ -234,8 +235,8 @@
     background-color:#ff6c46;
     box-shadow:0 5px 0 0 #d83722;
     position:absolute;
-    left:540px;
-    top:258px;
+    left:640px;
+    top:400px;
     width:118px;
     height:50px;
     cursor:pointer
@@ -248,8 +249,8 @@
     background-color:#ff6c46;
     box-shadow:0 5px 0 0 #d83722;
     position:absolute;
-    left:160px;
-    top:258px;
+    left:270px;
+    top:400px;
     width:118px;
     height:50px;
     cursor:pointer
@@ -258,9 +259,10 @@
 
 .screen .prize .name
 {
-    width:500px;
-    height:50px;
-    margin:75px 0 0 150px
+    /*background-color:white;*/
+    width:700px;
+    height:200px;
+    margin:90px 0 0 160px
 
 }
 
@@ -268,21 +270,22 @@
 {
     color:black;
     text-align:center;
+    text-transform:uppercase;
     font-size:40px;
-    margin-bottom:35px
+    margin-bottom:30px
 
 }
 
 .screen .prize .confirm:hover
 {
     box-shadow:0 0;
-    top:263px
+    top:400px;
 
 }
 
 .screen .prize .confirm:active
 {
-    top:268px;
+    top:405px;
     height:45px;
     box-shadow:0 -5px 0 0 #d83722
 
@@ -293,5 +296,12 @@
     line-height:50px;
     color:#FFF;
     text-align:center;
-
 }
+
+.removeMargin {
+    margin-right:0 !important;
+    margin-left:0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+

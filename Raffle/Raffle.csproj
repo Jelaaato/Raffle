@@ -50,6 +50,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization">
       <Private>True</Private>
     </Reference>
@@ -138,6 +144,7 @@
     <Content Include="Content\buttons.css" />
     <Content Include="Content\index.css" />
     <Content Include="Content\library.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="DesignerBootstrapTheme\css\custom.css" />
     <Content Include="DesignerBootstrapTheme\css\style.blue.css" />
@@ -154,15 +161,17 @@
     <Content Include="DesignerBootstrapTheme\js\main.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\background2.png" />
+    <Content Include="Images\button.png" />
     <Content Include="Images\button1.png" />
-    <Content Include="Images\joysticks1.png" />
-    <Content Include="Images\raffle4.png" />
-    <Content Include="Images\raffle6.png" />
+    <Content Include="Images\frame1.png" />
+    <Content Include="Images\frame2.png" />
+    <Content Include="Images\joysticks.png" />
+    <Content Include="Images\prize2.png" />
+    <Content Include="Images\raffle.png" />
     <Content Include="Images\Slider\6.jpg" />
-    <Content Include="Images\background.jpg" />
     <Content Include="Images\bokeh_body.jpg" />
     <Content Include="Images\buld_body.jpg" />
-    <Content Include="Images\button.png" />
     <Content Include="Images\body.jpg" />
     <Content Include="Images\eventwallpaper5_rockandroll.jpg" />
     <Content Include="Images\eventwallpaper_white.jpg" />
@@ -170,12 +179,8 @@
     <Content Include="Images\eventwallpaper5_rockandroll_black.jpg" />
     <Content Include="Images\eventwallpaper6.jpg" />
     <Content Include="Images\frame.png" />
-    <Content Include="Images\joysticks.png" />
     <Content Include="Images\lights_body.jpg" />
     <Content Include="Images\prize.png" />
-    <Content Include="Images\raffle.png" />
-    <Content Include="Images\raffle2.png" />
-    <Content Include="Images\raffle3.png" />
     <Content Include="Images\right-arrow.png" />
     <Content Include="Images\shadow.png" />
     <Content Include="Images\Slider\2.jpg" />
@@ -271,6 +276,7 @@
     <Content Include="Views\Home\ValidatePasscode.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Prize\PrizeOptions.cshtml" />
+    <Content Include="Views\Participants\_DisplayWinner.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
