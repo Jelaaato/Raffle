@@ -1,12 +1,29 @@
-@font-face
-{
-    font-family:iconfont;
-    src:url(../../font/iconfont.eot);
-    src:url(../../font/iconfont.eot?#iefix) 
-    format('embedded-opentype'),
-        url(../../font/iconfont.woff) format('woff'),
-        url(../../font/iconfont.ttf) format('truetype'),
-        url(../../font/iconfont.svg#iconfont) format('svg')
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 300;
+  font-style: normal;
+  src: url('../Open Sans/fonts/Open-Sans-300/Open-Sans-300.eot');
+  src: url('../Open Sans/fonts/Open-Sans-300/Open-Sans-300.eot?#iefix') format('embedded-opentype'),
+       local('Open Sans Light'),
+       local('Open-Sans-300'),
+       url('../Open Sans/fonts/Open-Sans-300/Open-Sans-300.woff2') format('woff2'),
+       url('../Open Sans/fonts/Open-Sans-300/Open-Sans-300.woff') format('woff'),
+       url('../Open Sans/fonts/Open-Sans-300/Open-Sans-300.ttf') format('truetype'),
+       url('../Open Sans/fonts/Open-Sans-300/Open-Sans-300.svg#OpenSans') format('svg');
+}
+
+@font-face {
+  font-family: 'Open Sans Semibold';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../Open Sans/fonts/Open-Sans-600/Open-Sans-600.eot');
+  src: url('../Open Sans/fonts/Open-Sans-600/Open-Sans-600.eot?#iefix') format('embedded-opentype'),
+       local('Open Sans Semibold'),
+       local('Open-Sans-600'),
+       url('../Open Sans/fonts/Open-Sans-600/Open-Sans-600.woff2') format('woff2'),
+       url('../Open Sans/fonts/Open-Sans-600/Open-Sans-600.woff') format('woff'),
+       url('../Open Sans/fonts/Open-Sans-600/Open-Sans-600.ttf') format('truetype'),
+       url('../Open Sans/fonts/Open-Sans-600/Open-Sans-600.svg#OpenSans') format('svg');
 }
 
 .barrage
@@ -268,9 +285,10 @@
 
 .screen .prize .name p
 {
-    color:black;
+    color:white;
     text-align:center;
     text-transform:uppercase;
+    font-family: 'Open Sans Semibold', sans-serif;
     font-size:40px;
     margin-bottom:30px
 
