@@ -164,9 +164,11 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\add.png" />
     <Content Include="Images\background2.png" />
     <Content Include="Images\button.png" />
     <Content Include="Images\button1.png" />
+    <Content Include="Images\cancel.png" />
     <Content Include="Images\frame1.png" />
     <Content Include="Images\frame2.png" />
     <Content Include="Images\joysticks.png" />
@@ -305,10 +307,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Participants\LoadParticipants.cshtml" />
-    <Content Include="Views\Prize\Prize.cshtml" />
     <Content Include="Views\Home\ValidatePasscode.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\Prize\PrizeOptions.cshtml" />
+    <Content Include="Views\Prize\Prizes.cshtml" />
     <Content Include="Views\Participants\_DisplayWinner.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
