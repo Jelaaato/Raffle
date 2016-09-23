@@ -1,0 +1,37 @@
+﻿@model Raffle.Models.PrizeViewModel
+
+@{
+    Layout = null;
+    ViewBag.Title = "Add";
+}
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@ViewBag.Title</title>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+<center>
+    <div id="addNewPrize" class="centerVertically">
+        <span class="removeBullet">@Html.ValidationSummary("", new { @class = "text-danger" })</span>
+        @using (Html.BeginForm("AddPrizes", "Prize", FormMethod.Post))
+        {
+            <div class="form-inline">
+                <div class="form-group">
+                    @Html.TextBoxFor(a => a.prize_name, new { @class = "bottomBorderOnly text-center customText", @autofocus = "autofocus", @placeholder = "Prize" })
+                    <br /><br /><br />
+                    @Html.TextBoxFor(a => a.quantity, new { @Value = "", @class = "bottomBorderOnly text-center customText", @placeholder = "Quantity" })
+                    <br /><br /><br /><br />
+                    <a href="@Url.Action("Prizes","Prize")">
+                        <img src="~/Images/cancel.png" />
+                    </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="removeButton">
+                        <img src="~/Images/right-arrow.png" />
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</center>

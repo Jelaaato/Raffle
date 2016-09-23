@@ -195,6 +195,7 @@
     <Content Include="Images\Slider\slider2.jpg" />
     <Content Include="Images\Slider\slider3.jpg" />
     <Content Include="Images\Slider\slider4.jpg" />
+    <Content Include="JSFiles\jquery.autoScroll.js" />
     <Content Include="JSFiles\library.js" />
     <EntityDeploy Include="Models\EventsOrganizerEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -311,6 +312,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Prize\Prizes.cshtml" />
     <Content Include="Views\Participants\_DisplayWinner.cshtml" />
+    <Content Include="Views\Prize\AddPrizes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

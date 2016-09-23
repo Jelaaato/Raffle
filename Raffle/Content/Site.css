@@ -68,6 +68,44 @@
     background: none !important;
 }
 
+.btnConfirm
+{
+    width:130px;
+    height:50px;
+    border-radius: 30px;
+    padding-top:10px;
+    outline: none !important;
+    border: 3px solid #F26C4F;
+    background-color:transparent;
+    font-size:15px;
+    color:black;
+    font-family:'Open Sans Semibold', sans-serif;
+    text-transform:uppercase;
+    position:absolute;
+    left:270px;
+    top:400px;
+    cursor:pointer;
+}
+
+.btnVoid 
+{
+    width:130px;
+    height:50px;
+    border-radius: 30px;
+    padding-top:10px;
+    outline: none !important;
+    border: 3px solid #F26C4F;
+    background-color:transparent;
+    font-size:15px;
+    color:black;
+    font-family:'Open Sans Semibold', sans-serif;
+    text-transform:uppercase;
+    position:absolute;
+    left:640px;
+    top:400px;
+    cursor:pointer;
+}
+
 .headerText 
 {
     position: absolute;
@@ -184,6 +222,31 @@
     font-family: 'Open Sans Semibold', sans-serif;
 }
 
+.winnerText 
+{
+    font-family: 'Open Sans Semibold', sans-serif;
+    font-size: 18px;
+}
+
+.winnerTitle 
+{
+    font-family: 'Open Sans Semibold', sans-serif;
+    font-size: 25px;
+}
+
+.prizeName 
+{
+    font-family: 'Open Sans Semibold', sans-serif serif;
+    text-transform: uppercase;
+    font-size: 50px;
+}
+
+.prizeQty
+{
+    font-family: 'Open Sans Semibold', sans-serif serif;
+    font-size: 30px;
+}
+
 .customText 
 {
     font-family: 'Open Sans', sans-serif;
@@ -201,5 +264,34 @@
 
 .badgeFontSize
 {
-    font-size:30px;
+    font-size:15px;
+}
+
+#autoScroll
+{
+    height:50%;
+    overflow-y:hidden;
+}
+
+a.btnConfirm:hover
+{
+  background-color: #008000 !important;
+  text-decoration: none !important;
+  color:white;
+}
+
+a.btnVoid:hover
+{
+  background-color: red !important;
+  text-decoration: none !important;
+  color:white;
+}
+
+a.removeButton {
+    color:black;
+}
+
+a.removeButton:hover {
+    text-decoration:none;
+    color:black;
 }

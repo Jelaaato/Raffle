@@ -38,7 +38,8 @@ namespace Raffle.Controllers
 
                 if (ptcpnts.prizes == null)
                 {
-                    return RedirectToAction("PrizeOptions", "Prize");
+                    TempData["showModal"] = "true";
+                    return RedirectToAction("Prizes", "Prize");
                 }
                 else
                 {
@@ -67,9 +68,9 @@ namespace Raffle.Controllers
         {
             try
             {
-                var getID = (from p in db.Participants where p.display_name == wname select p.participant_id).First();
-                var getDept = (from p in db.Participants where p.display_name == wname select p.department_name).First();
                 var id = new Guid(Session["event"].ToString());
+                var getID = (from p in db.Participants where p.display_name == wname && p.event_id == id select p.participant_id).First();
+                var getDept = (from p in db.Participants where p.display_name == wname && p.event_id == id select p.department_name).First();
 
                 Winners winner = new Winners()
                 {
@@ -120,14 +121,10 @@ namespace Raffle.Controllers
             return RedirectToAction("LoadParticipants");
         }
 
-        public ActionResult DisplayWinner(int? page, string currentfilter)
+        public ActionResult DisplayWinner()
         {
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
-
             var id = new Guid(Session["event"].ToString());
-            ViewBag.CurrentFilter = id;
-            var winners = db.Winners.Where(w => w.event_id == id).OrderBy(w => w.winner_name).ToPagedList(pageNumber, pageSize);
+            var winners = db.Winners.Where(w => w.event_id == id).OrderBy(w => w.winner_name).ToList();
 
             return PartialView("_DisplayWinner", winners);
         }
