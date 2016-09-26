@@ -13,6 +13,7 @@ namespace Raffle.Models
         public string prize_name { get; set; }
         [Required]
         public int quantity { get; set; }
+        public bool includeAll { get; set; }
         public IQueryable<PrizeDTO> prize { get; set; }
     }
 

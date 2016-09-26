@@ -20,5 +20,6 @@ namespace Raffle.Models
         public bool raffle_flag { get; set; }
         public int prize_qty { get; set; }
         public Nullable<int> prizeout_qty { get; set; }
+        public bool includeAll_flag { get; set; }
     }
 }

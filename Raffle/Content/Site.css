@@ -247,13 +247,22 @@
     font-size: 30px;
 }
 
-.customText 
+.customTextLarge 
 {
     font-family: 'Open Sans', sans-serif;
     font-size: 50px;
     text-transform: uppercase;
     /*letter-spacing: 5px;*/
 }
+
+.customTextSmall
+{
+    font-family: 'Open Sans Semibold', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    /*letter-spacing: 5px;*/
+}
+
 
 .centerVertically {
     position:absolute;
@@ -294,4 +303,9 @@ a.removeButton {
 a.removeButton:hover {
     text-decoration:none;
     color:black;
+}
+
+.checkBox:hover 
+{
+    cursor:pointer;
 }

@@ -20,9 +20,11 @@
         {
             <div class="form-inline">
                 <div class="form-group">
-                    @Html.TextBoxFor(a => a.prize_name, new { @class = "bottomBorderOnly text-center customText", @autofocus = "autofocus", @placeholder = "Prize" })
+                    @Html.TextBoxFor(a => a.prize_name, new { @class = "bottomBorderOnly text-center customTextLarge", @autofocus = "autofocus", @placeholder = "Prize" })
                     <br /><br /><br />
-                    @Html.TextBoxFor(a => a.quantity, new { @Value = "", @class = "bottomBorderOnly text-center customText", @placeholder = "Quantity" })
+                    @Html.TextBoxFor(a => a.quantity, new { @Value = "", @class = "bottomBorderOnly text-center customTextLarge", @placeholder = "Quantity" })
+                    <br /><br />
+                    @Html.CheckBoxFor(a => a.includeAll, new { @class = "checkBox"})<span class="customTextSmall"> Include all participants</span>
                     <br /><br /><br /><br />
                     <a href="@Url.Action("Prizes","Prize")">
                         <img src="~/Images/cancel.png" />

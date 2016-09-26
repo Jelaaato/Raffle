@@ -197,23 +197,6 @@
     <Content Include="Images\Slider\slider4.jpg" />
     <Content Include="JSFiles\jquery.autoScroll.js" />
     <Content Include="JSFiles\library.js" />
-    <EntityDeploy Include="Models\EventsOrganizerEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EventsOrganizerEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\EventsOrganizerEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EventsOrganizerEntities.edmx</DependentUpon>
-      <LastGenOutput>EventsOrganizerEntities.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\EventsOrganizerEntities.edmx.diagram">
-      <DependentUpon>EventsOrganizerEntities.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\EventsOrganizerEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EventsOrganizerEntities.edmx</DependentUpon>
-      <LastGenOutput>EventsOrganizerEntities.cs</LastGenOutput>
-    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -247,6 +230,23 @@
     <Content Include="Open Sans\fonts\Open-Sans-700\Open-Sans-700.ttf" />
     <Content Include="Open Sans\fonts\Open-Sans-700\Open-Sans-700.woff" />
     <Content Include="Open Sans\fonts\Open-Sans-700\Open-Sans-700.woff2" />
+    <EntityDeploy Include="Models\EventsOrganizerModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EventsOrganizerModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EventsOrganizerModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EventsOrganizerModel.edmx</DependentUpon>
+      <LastGenOutput>EventsOrganizerModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EventsOrganizerModel.edmx.diagram">
+      <DependentUpon>EventsOrganizerModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\EventsOrganizerModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EventsOrganizerModel.edmx</DependentUpon>
+      <LastGenOutput>EventsOrganizerModel.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\Raffle.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Open Sans\css\fonts.css" />
@@ -270,34 +270,34 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Events.cs">
-      <DependentUpon>EventsOrganizerEntities.tt</DependentUpon>
+      <DependentUpon>EventsOrganizerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EventsOrganizerEntities.Context.cs">
+    <Compile Include="Models\EventsOrganizerModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EventsOrganizerEntities.Context.tt</DependentUpon>
+      <DependentUpon>EventsOrganizerModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EventsOrganizerEntities.cs">
+    <Compile Include="Models\EventsOrganizerModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EventsOrganizerEntities.tt</DependentUpon>
+      <DependentUpon>EventsOrganizerModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EventsOrganizerEntities.Designer.cs">
+    <Compile Include="Models\EventsOrganizerModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EventsOrganizerEntities.edmx</DependentUpon>
+      <DependentUpon>EventsOrganizerModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Participants.cs">
-      <DependentUpon>EventsOrganizerEntities.tt</DependentUpon>
+      <DependentUpon>EventsOrganizerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ParticipantsViewModel.cs" />
     <Compile Include="Models\PasscodeModel.cs" />
     <Compile Include="Models\Prizes.cs">
-      <DependentUpon>EventsOrganizerEntities.tt</DependentUpon>
+      <DependentUpon>EventsOrganizerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PrizeViewModel.cs" />
     <Compile Include="Models\Winners.cs">
-      <DependentUpon>EventsOrganizerEntities.tt</DependentUpon>
+      <DependentUpon>EventsOrganizerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

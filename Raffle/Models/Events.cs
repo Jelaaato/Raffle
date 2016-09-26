@@ -18,14 +18,18 @@ namespace Raffle.Models
         public string event_name { get; set; }
         public System.DateTime event_date { get; set; }
         public string event_location { get; set; }
+        public System.DateTime start_datetime { get; set; }
+        public System.DateTime end_datetime { get; set; }
         public byte[] event_banner { get; set; }
         public Nullable<bool> delete_flag { get; set; }
         public Nullable<System.DateTime> deleted_datetime { get; set; }
-        public int passcode { get; set; }
-        public System.DateTime start_datetime { get; set; }
-        public System.DateTime end_datetime { get; set; }
         public Nullable<System.DateTime> date_created { get; set; }
+        public int passcode { get; set; }
         public Nullable<System.TimeSpan> start_time { get; set; }
         public string email_address { get; set; }
+        public Nullable<int> starttime_ref_id { get; set; }
+        public Nullable<int> endtime_ref_id { get; set; }
+        public Nullable<bool> onLive { get; set; }
+        public Nullable<int> participant_count { get; set; }
     }
 }

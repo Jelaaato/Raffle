@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bf3130d696874231a9cdcd41829e8b23" Name="Diagram1" ZoomLevel="98">
+      <Diagram DiagramId="95864a7a235e47c0ad204c10a6f8f3b2" Name="Diagram1">
         <EntityTypeShape EntityType="EventsOrganizerModel.Events" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EventsOrganizerModel.Participants" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EventsOrganizerModel.Prizes" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EventsOrganizerModel.Winners" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventsOrganizerModel.Winners" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

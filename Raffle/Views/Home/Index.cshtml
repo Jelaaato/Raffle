@@ -6,14 +6,15 @@
     ViewBag.Title = "Choose an Event";
 }
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>@ViewBag.Title</title>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
 
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-<link href="~/Content/Site.css" rel="stylesheet" />
-<script src="~/Scripts/modernizr-2.6.2.js"></script>
-
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
 
 <!--header text "Choose an Event"-->
 <div class="headerText text-center">
@@ -60,5 +61,29 @@
         }
 </center>
 
+<!--noParticipants Modal-->
+<div class="modal fade centerVertically" id="noParticipants" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body">
+                <center>
+                    <span style="font-size:18px;padding-top:30px;">This event has no participants yet.</span>
+                    <br /><br />
+                    <button type="button" data-dismiss="modal" class="removeButton">
+                        <img src="~/Images/right-arrow.png" width="48" height="48" />
+                    </button>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="~/Scripts/jquery-1.9.1.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
+
+<script>
+    @if (TempData["showModal"] == "true")
+    {
+        @:$(document).ready(function () { $('#noParticipants').modal('show'); })
+    }
+</script>

@@ -31,12 +31,17 @@ namespace Raffle.Controllers
         public ActionResult ValidatePasscode(string name)
         {
             Session["eventName"] = name;
+            var participantCount = db.Events.Where(e => e.event_name == name).Select(e => e.participant_count).First();
 
             if (Session["eventName"] == null)
             {
                 return RedirectToAction("Index");
             }
-
+            else if(participantCount == null)
+            {
+                TempData["showModal"] = "true";
+                return RedirectToAction("Index");
+            }
             return View();
         }
 

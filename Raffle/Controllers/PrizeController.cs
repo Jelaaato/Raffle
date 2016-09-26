@@ -94,7 +94,8 @@ namespace Raffle.Controllers
                     prize_name = model.prize_name,
                     raffle_flag = false,
                     prize_qty = model.quantity,
-                    prizeout_qty = 0
+                    prizeout_qty = 0,
+                    includeAll_flag = model.includeAll
                 };
 
                 db.Prizes.Add(prizes);
