@@ -1,20 +1,17 @@
 ﻿@model IEnumerable<Raffle.Models.Winners>
 
+<br />
 
-
-<div id="wrapper">
+@foreach (var w in Model)
+{ 
+    <div class="text-center customFont">
+        <h5>
+            <b><span class="winnerText">@w.winner_name</span></b>
+            <br />
+            <span class="winnerDetails">@w.winner_department</span>
+            <br />
+            <span class="winnerDetails">@w.prize_name</span>
+        </h5>
+    </div>
     <br />
-    @foreach (var w in Model)
-    { 
-        <div class="text-center customFont">
-            <h5>
-                <b><span class="winnerText">@w.winner_name</span></b>
-                <br />
-                @w.winner_department
-                <br />
-                @w.prize_name
-            </h5>
-        </div>
-        <br />
-    }
-</div>
+}

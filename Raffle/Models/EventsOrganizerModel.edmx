@@ -24,6 +24,8 @@
           <Property Name="email_address" Type="varchar" MaxLength="200" />
           <Property Name="starttime_ref_id" Type="int" />
           <Property Name="endtime_ref_id" Type="int" />
+          <Property Name="hasRaffle" Type="smallint" />
+          <Property Name="registration_req" Type="smallint" />
           <Property Name="onLive" Type="bit" />
           <Property Name="participant_count" Type="int" />
         </EntityType>
@@ -46,6 +48,7 @@
           <Property Name="delete_flag" Type="bit" />
           <Property Name="manual_reg_flag" Type="bit" />
           <Property Name="winnerAgain_flag" Type="bit" />
+          <Property Name="out_flag" Type="bit" />
         </EntityType>
         <EntityType Name="Prizes">
           <Key>
@@ -102,6 +105,8 @@
           <Property Name="endtime_ref_id" Type="Int32" />
           <Property Name="onLive" Type="Boolean" />
           <Property Name="participant_count" Type="Int32" />
+          <Property Name="hasRaffle" Type="Int16" />
+          <Property Name="registration_req" Type="Int16" />
         </EntityType>
         <EntityType Name="Participants">
           <Key>
@@ -122,6 +127,7 @@
           <Property Name="delete_flag" Type="Boolean" />
           <Property Name="manual_reg_flag" Type="Boolean" />
           <Property Name="winnerAgain_flag" Type="Boolean" />
+          <Property Name="out_flag" Type="Boolean" />
         </EntityType>
         <EntityType Name="Prizes">
           <Key>
@@ -162,6 +168,8 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Events">
               <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="registration_req" ColumnName="registration_req" />
+                <ScalarProperty Name="hasRaffle" ColumnName="hasRaffle" />
                 <ScalarProperty Name="event_id" ColumnName="event_id" />
                 <ScalarProperty Name="event_name" ColumnName="event_name" />
                 <ScalarProperty Name="event_date" ColumnName="event_date" />
@@ -185,6 +193,7 @@
           <EntitySetMapping Name="Participants">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Participants">
               <MappingFragment StoreEntitySet="Participants">
+                <ScalarProperty Name="out_flag" ColumnName="out_flag" />
                 <ScalarProperty Name="winnerAgain_flag" ColumnName="winnerAgain_flag" />
                 <ScalarProperty Name="participant_id" ColumnName="participant_id" />
                 <ScalarProperty Name="event_id" ColumnName="event_id" />

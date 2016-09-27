@@ -17,66 +17,106 @@ namespace Raffle.Controllers
         // GET: Participants
         public ActionResult LoadParticipants(PrizeViewModel model)
         {
-            var id = new Guid(Session["event"].ToString());
-            var prize_id = new Guid(Session["prizeId"].ToString());
-            var includeAll = db.Prizes.Where(p => p.prize_id == prize_id).Select(p => p.includeAll_flag).FirstOrDefault();
-
             if (Session["event"] == null)
             {
                 return RedirectToAction("Index", "Home");
             }
-            else if ((Session["event"] != null) && (!(bool)(includeAll)))
-            {
-                ParticipantsViewModel ptcpnts = new ParticipantsViewModel
-                {
-                    participants = (from p in db.Participants
-                                    where p.event_id == id && p.winner_flag == null && p.delete_flag == null
-                                    select p.display_name).ToList(),
-
-                    prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
-                };
-
-                if (ptcpnts.prizes == null)
-                {
-
-                    TempData["showModal"] = "true";
-                    return RedirectToAction("Prizes", "Prize");
-                }
-                else
-                {
-                    return View(ptcpnts);
-                }
-            }
             else
-            { 
-                ParticipantsViewModel ptcpnts = new ParticipantsViewModel
-                {
-                    participants = (from p in db.Participants
-                                    where p.event_id == id && p.winnerAgain_flag == null && p.delete_flag == null
-                                    select p.display_name).ToList(),
+            {
+                var id = new Guid(Session["event"].ToString());
+                var reg_req = db.Events.Where(e => e.event_id == id).Select(e => e.registration_req).FirstOrDefault();
+                var prize_id = new Guid(Session["prizeId"].ToString());
+                bool includeAll = (bool)db.Prizes.Where(p => p.prize_id == prize_id).Select(p => p.includeAll_flag).FirstOrDefault();
 
-                    prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
-                };
-
-                if (ptcpnts.prizes == null)
+                if(reg_req == 1)
                 {
-                    var parti = db.Participants.Where(p => p.winnerAgain_flag == true).ToList();
-                    foreach (var p in parti)
+                    if (includeAll)
                     {
-                        if (p.winner_flag == null)
+                        ParticipantsViewModel ptcpnts = new ParticipantsViewModel
                         {
-                            p.winner_flag = true;
-                            p.winnerAgain_flag = null;
-                            db.SaveChanges();
+                            participants = (from p in db.Participants
+                                            where p.event_id == id && p.winnerAgain_flag == null && p.delete_flag == null && p.registered_flag == true && p.out_flag == null
+                                            select p.display_name).ToList(),
+
+                            prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
+                        };
+
+                        if (ptcpnts.prizes == null)
+                        {
+                            TempData["showModal"] = "true";
+                            return RedirectToAction("Prizes", "Prize");
+                        }
+                        else
+                        {
+                            return View(ptcpnts);
                         }
                     }
-                    
-                    TempData["showModal"] = "true";
-                    return RedirectToAction("Prizes", "Prize");
+                    else
+                    {
+                        ParticipantsViewModel ptcpnts = new ParticipantsViewModel
+                        {
+                            participants = (from p in db.Participants
+                                            where p.event_id == id && p.winner_flag == null && p.delete_flag == null && p.registered_flag == true && p.out_flag == null && p.winnerAgain_flag == null
+                                            select p.display_name).ToList(),
+
+                            prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
+                        };
+
+                        if (ptcpnts.prizes == null)
+                        {
+                            TempData["showModal"] = "true";
+                            return RedirectToAction("Prizes", "Prize");
+                        }
+                        else
+                        {
+                            return View(ptcpnts);
+                        }
+                    }
                 }
                 else
                 {
-                    return View(ptcpnts);
+                    if (includeAll)
+                    {
+                        ParticipantsViewModel ptcpnts = new ParticipantsViewModel
+                        {
+                            participants = (from p in db.Participants
+                                            where p.event_id == id && p.winnerAgain_flag == null && p.delete_flag == null && p.out_flag == null
+                                            select p.display_name).ToList(),
+
+                            prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
+                        };
+
+                        if (ptcpnts.prizes == null)
+                        {
+                            TempData["showModal"] = "true";
+                            return RedirectToAction("Prizes", "Prize");
+                        }
+                        else
+                        {
+                            return View(ptcpnts);
+                        }
+                    }
+                    else
+                    {
+                        ParticipantsViewModel ptcpnts = new ParticipantsViewModel
+                        {
+                            participants = (from p in db.Participants
+                                            where p.event_id == id && p.winner_flag == null && p.delete_flag == null && p.out_flag == null && p.winnerAgain_flag == null
+                                            select p.display_name).ToList(),
+
+                            prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
+                        };
+
+                        if (ptcpnts.prizes == null)
+                        {
+                            TempData["showModal"] = "true";
+                            return RedirectToAction("Prizes", "Prize");
+                        }
+                        else
+                        {
+                            return View(ptcpnts);
+                        }
+                    }
                 }
             }
         }
@@ -101,8 +141,8 @@ namespace Raffle.Controllers
             {
                 var id = new Guid(Session["event"].ToString());
                 var includeAll = db.Prizes.Where(p => p.prize_id == prize_id).Select(p => p.includeAll_flag).FirstOrDefault();
-                var getID = (from p in db.Participants where p.display_name == wname && p.event_id == id select p.participant_id).First();
-                var getDept = (from p in db.Participants where p.display_name == wname && p.event_id == id select p.department_name).First();
+                var getID = (from p in db.Participants where p.display_name == wname && p.event_id == id select p.participant_id).FirstOrDefault();
+                var getDept = (from p in db.Participants where p.display_name == wname && p.event_id == id select p.department_name).FirstOrDefault();
 
                 Winners winner = new Winners()
                 {
@@ -169,6 +209,12 @@ namespace Raffle.Controllers
             var winners = db.Winners.Where(w => w.event_id == id).OrderBy(w => w.winner_name).ToList();
 
             return PartialView("_DisplayWinner", winners);
+        }
+
+        public ActionResult CaptureDept(string name)
+        {
+            var dept = db.Participants.Where(p => p.display_name == name).Select(p => p.department_name).FirstOrDefault();
+            return View(dept);
         }
     }
 

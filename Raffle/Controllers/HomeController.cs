@@ -15,7 +15,7 @@ namespace Raffle.Controllers
 
         public ActionResult Index()
         {
-            var events = db.Events.Where(e => e.delete_flag != true).OrderBy(e => e.event_name).ToList();
+            var events = db.Events.Where(e => e.delete_flag != true && e.hasRaffle == 1).OrderBy(e => e.event_name).ToList();
 
             if (events.Count() != 0)
             {
@@ -31,17 +31,20 @@ namespace Raffle.Controllers
         public ActionResult ValidatePasscode(string name)
         {
             Session["eventName"] = name;
-            var participantCount = db.Events.Where(e => e.event_name == name).Select(e => e.participant_count).First();
 
             if (Session["eventName"] == null)
             {
                 return RedirectToAction("Index");
             }
-            else if(participantCount == null)
+            else
             {
-                TempData["showModal"] = "true";
-                return RedirectToAction("Index");
-            }
+                var participantCount = db.Events.Where(e => e.event_name == name).Select(e => e.participant_count).First();
+                if (participantCount == null)
+                {
+                    TempData["showModal"] = "true";
+                    return RedirectToAction("Index");
+                }
+            } 
             return View();
         }
 
@@ -56,6 +59,7 @@ namespace Raffle.Controllers
 
                 if (model.passcode == code)
                 {
+
                     return RedirectToAction("Prizes", "Prize");
                 }
                 else
@@ -64,6 +68,12 @@ namespace Raffle.Controllers
                 }
             }
             return View();
+        }
+
+        public ActionResult Exit()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -32,39 +32,13 @@ namespace Raffle.Controllers
                                  count = b.prize_qty,
                                  prizeout_count = b.prizeout_qty,
                                  prize_id = b.prize_id
-                             })
+                             }).OrderBy(b => b.distinct_prize_name)
                 };
                 return View(model);
             }
 
 
         }
-
-        //[HttpPost]
-        //public ActionResult Prizes(PrizeViewModel model)
-        //{
-        //    var id = new Guid(Session["event"].ToString());
-        //    int prizecount = model.quantity;
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        Prizes prizes = new Prizes()
-        //        {
-        //            prize_id = Guid.NewGuid(),
-        //            event_id = id,
-        //            prize_name = model.prize_name,
-        //            raffle_flag = false,
-        //            prize_qty = model.quantity,
-        //            prizeout_qty = 0
-        //        };
-
-        //        db.Prizes.Add(prizes);
-        //        db.SaveChanges();
-
-        //        ModelState.Clear();
-        //    }
-        //    return RedirectToAction("Prizes");
-        //}
 
         public ActionResult AddPrizes()
         {
@@ -111,7 +85,6 @@ namespace Raffle.Controllers
             
         }
 
-        //[HttpPost]
         public ActionResult Delete(Guid? id)
         {
             Prizes prizes = db.Prizes.Find(id);

@@ -31,5 +31,7 @@ namespace Raffle.Models
         public Nullable<int> endtime_ref_id { get; set; }
         public Nullable<bool> onLive { get; set; }
         public Nullable<int> participant_count { get; set; }
+        public Nullable<short> hasRaffle { get; set; }
+        public Nullable<short> registration_req { get; set; }
     }
 }

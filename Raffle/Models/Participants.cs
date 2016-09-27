@@ -29,5 +29,6 @@ namespace Raffle.Models
         public Nullable<bool> delete_flag { get; set; }
         public Nullable<bool> manual_reg_flag { get; set; }
         public Nullable<bool> winnerAgain_flag { get; set; }
+        public Nullable<bool> out_flag { get; set; }
     }
 }

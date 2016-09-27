@@ -58,19 +58,18 @@
             <img src="@Url.Action("LoadEventBanner","Participants")" style="width:100%;padding-top:15px;" />
             <br />
             <br />
-            <br />
             <center>
                 <span class="prizeName">@Model.prizes.prize_name</span>
                 <br />
                 <span class="prizeQty">@Model.prizes.prizeout_qty out of @Model.prizes.prize_qty</span>
                 <br />
-                <a href="@Url.Action("Prizes","Prize")">Change</a>
+                <a href="@Url.Action("Prizes","Prize")" class="removeButton" style="font-size:15px;color:green;">Change</a>
                 <br />
+                <a href="@Url.Action("Exit","Home")" class="removeButton" style="font-size:13px;color:red;">Exit Event</a>
                 <br />
                 <br />
                 <br />
                 <span class="winnerTitle text-center">Winners</span>
-                <br />
                 <br />
                 <div id="autoScroll">
                     @Html.Action("DisplayWinner", "Participants")

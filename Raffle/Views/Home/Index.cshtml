@@ -52,7 +52,7 @@
     @foreach (var e in Model)
         {
             <div class="row">
-                <a href="@Url.Action("ValidatePasscode", "Home", new { id = e.event_id, name = e.event_name })">
+                <a href="@Url.Action("ValidatePasscode", "Home", new { id = e.event_id, name = e.event_name})">
                     <div class="eventsRow col-lg-12">
                         <span class="eventsText">@e.event_name</span>
                     </div>
