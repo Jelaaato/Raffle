@@ -12,19 +12,6 @@
        url('../Open Sans/fonts/Open-Sans-300/Open-Sans-300.svg#OpenSans') format('svg');
 }
 
-@font-face {
-  font-family: 'Open Sans Semibold';
-  font-weight: 600;
-  font-style: normal;
-  src: url('../Open Sans/fonts/Open-Sans-600/Open-Sans-600.eot');
-  src: url('../Open Sans/fonts/Open-Sans-600/Open-Sans-600.eot?#iefix') format('embedded-opentype'),
-       local('Open Sans Semibold'),
-       local('Open-Sans-600'),
-       url('../Open Sans/fonts/Open-Sans-600/Open-Sans-600.woff2') format('woff2'),
-       url('../Open Sans/fonts/Open-Sans-600/Open-Sans-600.woff') format('woff'),
-       url('../Open Sans/fonts/Open-Sans-600/Open-Sans-600.ttf') format('truetype'),
-       url('../Open Sans/fonts/Open-Sans-600/Open-Sans-600.svg#OpenSans') format('svg');
-}
 
 @font-face {
   font-family: 'Open Sans Bold';
@@ -316,4 +303,56 @@ a.removeButton:hover {
 .checkBox:hover 
 {
     cursor:pointer;
+}
+
+.nameText 
+{
+    font-size:80px;
+    color:black;
+    letter-spacing:50px;
+    font-family:'Open Sans', sans-serif;
+    text-transform:uppercase;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .nameText
+    {
+        font-size:50px;
+        letter-spacing:30px;
+    }
+    
+    .customTextLarge 
+    {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 30px;
+        text-transform: uppercase;
+        /*letter-spacing: 5px;*/
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .nameText {
+        font-size:30px;
+        letter-spacing:20px;
+    }
+    .customTextLarge 
+    {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 30px;
+        text-transform: uppercase;
+        /*letter-spacing: 5px;*/
+    }
+}
+@media (max-width: 767px) {
+    .nameText {
+        font-size:20px;
+        letter-spacing:10px;
+    }
+
+    .customTextLarge 
+    {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        text-transform: uppercase;
+        /*letter-spacing: 5px;*/
+    }
 }

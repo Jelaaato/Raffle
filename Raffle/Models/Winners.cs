@@ -21,5 +21,6 @@ namespace Raffle.Models
         public System.Guid participant_id { get; set; }
         public string winner_name { get; set; }
         public string winner_department { get; set; }
+        public Nullable<System.DateTime> raffled_datetime { get; set; }
     }
 }

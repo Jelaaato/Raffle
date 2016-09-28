@@ -49,6 +49,7 @@
           <Property Name="manual_reg_flag" Type="bit" />
           <Property Name="winnerAgain_flag" Type="bit" />
           <Property Name="out_flag" Type="bit" />
+          <Property Name="out_datetime" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="Prizes">
           <Key>
@@ -72,7 +73,8 @@
           <Property Name="prize_name" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="participant_id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="winner_name" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="winner_department" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="winner_department" Type="varchar" MaxLength="200" />
+          <Property Name="raffled_datetime" Type="datetime" />
         </EntityType>
         <EntityContainer Name="EventsOrganizerModelStoreContainer">
           <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
@@ -128,6 +130,7 @@
           <Property Name="manual_reg_flag" Type="Boolean" />
           <Property Name="winnerAgain_flag" Type="Boolean" />
           <Property Name="out_flag" Type="Boolean" />
+          <Property Name="out_datetime" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Prizes">
           <Key>
@@ -151,7 +154,8 @@
           <Property Name="prize_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="participant_id" Type="Guid" Nullable="false" />
           <Property Name="winner_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="winner_department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="winner_department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="raffled_datetime" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityContainer Name="EventsOrganizerEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Events" EntityType="Self.Events" />
@@ -193,6 +197,7 @@
           <EntitySetMapping Name="Participants">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Participants">
               <MappingFragment StoreEntitySet="Participants">
+                <ScalarProperty Name="out_datetime" ColumnName="out_datetime" />
                 <ScalarProperty Name="out_flag" ColumnName="out_flag" />
                 <ScalarProperty Name="winnerAgain_flag" ColumnName="winnerAgain_flag" />
                 <ScalarProperty Name="participant_id" ColumnName="participant_id" />
@@ -228,6 +233,7 @@
           <EntitySetMapping Name="Winners">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Winners">
               <MappingFragment StoreEntitySet="Winners">
+                <ScalarProperty Name="raffled_datetime" ColumnName="raffled_datetime" />
                 <ScalarProperty Name="winner_id" ColumnName="winner_id" />
                 <ScalarProperty Name="event_id" ColumnName="event_id" />
                 <ScalarProperty Name="prize_id" ColumnName="prize_id" />

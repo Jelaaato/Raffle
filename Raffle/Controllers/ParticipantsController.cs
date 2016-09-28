@@ -152,7 +152,8 @@ namespace Raffle.Controllers
                     prize_name = prize_name,
                     winner_department = getDept,
                     winner_id = Guid.NewGuid(),
-                    winner_name = wname
+                    winner_name = wname,
+                    raffled_datetime = DateTime.Now
                 };
 
                 db.Winners.Add(winner);
