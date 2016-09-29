@@ -15,7 +15,7 @@ namespace Raffle.Controllers
 
         public ActionResult Index()
         {
-            var events = db.Events.Where(e => e.delete_flag != true && e.hasRaffle == 1).OrderBy(e => e.event_name).ToList();
+            var events = db.Events.Where(e => e.delete_flag != true && e.hasRaffle == 1 && e.closed_flag == null).OrderBy(e => e.event_date).ToList();
 
             if (events.Count() != 0)
             {

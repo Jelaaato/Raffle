@@ -28,6 +28,8 @@
           <Property Name="registration_req" Type="smallint" />
           <Property Name="onLive" Type="bit" />
           <Property Name="participant_count" Type="int" />
+          <Property Name="closed_flag" Type="bit" />
+          <Property Name="closed_datetime" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="Participants">
           <Key>
@@ -109,6 +111,8 @@
           <Property Name="participant_count" Type="Int32" />
           <Property Name="hasRaffle" Type="Int16" />
           <Property Name="registration_req" Type="Int16" />
+          <Property Name="closed_flag" Type="Boolean" />
+          <Property Name="closed_datetime" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Participants">
           <Key>
@@ -172,6 +176,8 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Events">
               <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="closed_datetime" ColumnName="closed_datetime" />
+                <ScalarProperty Name="closed_flag" ColumnName="closed_flag" />
                 <ScalarProperty Name="registration_req" ColumnName="registration_req" />
                 <ScalarProperty Name="hasRaffle" ColumnName="hasRaffle" />
                 <ScalarProperty Name="event_id" ColumnName="event_id" />

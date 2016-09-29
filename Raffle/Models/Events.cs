@@ -33,5 +33,7 @@ namespace Raffle.Models
         public Nullable<int> participant_count { get; set; }
         public Nullable<short> hasRaffle { get; set; }
         public Nullable<short> registration_req { get; set; }
+        public Nullable<bool> closed_flag { get; set; }
+        public Nullable<System.DateTime> closed_datetime { get; set; }
     }
 }
