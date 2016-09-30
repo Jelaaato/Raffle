@@ -9,7 +9,7 @@ using PagedList;
 
 namespace Raffle.Controllers
 {
-    public class ParticipantsController : Controller
+    public class RaffleController : Controller
     {
 
         private EventsOrganizerEntities db = new EventsOrganizerEntities();
@@ -135,7 +135,7 @@ namespace Raffle.Controllers
             }
         }
 
-        public ActionResult UpdateFlag(Guid prize_id, string prize_name, string wname, PrizeViewModel model)
+        public ActionResult UpdateFlags(Guid prize_id, string prize_name, string wname, PrizeViewModel model)
         {
             try
             {
@@ -144,6 +144,7 @@ namespace Raffle.Controllers
                 var getID = (from p in db.Participants where p.display_name == wname && p.event_id == id select p.participant_id).FirstOrDefault();
                 var getDept = (from p in db.Participants where p.display_name == wname && p.event_id == id select p.department_name).FirstOrDefault();
 
+                //insert winners into dbo.Winners
                 Winners winner = new Winners()
                 {
                     event_id = id,
@@ -159,7 +160,7 @@ namespace Raffle.Controllers
                 db.Winners.Add(winner);
                 db.SaveChanges();
 
-                //change code here
+                //check if prize is raffled including all participants
                 if (!(bool)includeAll)
                 {
                     Participants participant = db.Participants.First(a => a.participant_id == getID);
@@ -173,14 +174,17 @@ namespace Raffle.Controllers
                     db.SaveChanges();
                 }
                 
+                // get the total count of winners for a specific prize
                 var winnerCount = (from w in db.Winners where w.event_id == id && w.prize_id == prize_id select w.winner_id).Count();
 
                 if (winnerCount != 0)
                 {
+                    //update number of prize that are already raffled based on number of winners
                     Prizes prize = db.Prizes.First(a => a.prize_id == prize_id);
                     prize.prizeout_qty = winnerCount;
                     db.SaveChanges();
 
+                    // if total number of prize is equal to the total number of raffled prize, flag prize as already raffled
                     if (prize.prize_qty == prize.prizeout_qty)
                     {
                         prize = db.Prizes.First(a => a.prize_id == prize_id);

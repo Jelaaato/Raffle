@@ -309,9 +309,15 @@ a.removeButton:hover {
 {
     font-size:80px;
     color:black;
-    letter-spacing:50px;
+    letter-spacing:10px;
     font-family:'Open Sans', sans-serif;
     text-transform:uppercase;
+}
+
+.banner 
+{
+    width:100%;
+    padding-top:15px;
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -341,15 +347,19 @@ a.removeButton:hover {
         text-transform: uppercase;
         /*letter-spacing: 5px;*/
     }
+    .banner 
+    {
+        width:100%;
+        padding-top:10px;
+    }
 }
 @media (max-width: 767px) {
     .nameText {
-        font-size:20px;
-        letter-spacing:10px;
+        font-size: 20px;
+        letter-spacing: 10px;
     }
 
-    .customTextLarge 
-    {
+    .customTextLarge {
         font-family: 'Open Sans', sans-serif;
         font-size: 20px;
         text-transform: uppercase;

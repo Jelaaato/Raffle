@@ -11,6 +11,5 @@ namespace Raffle.Models
         public Prizes prizes { get; set; }
         public Participants winner { get; set; }
         public string winner_name { get; set; }
-        public byte eventimg { get; set; }
     }
 }

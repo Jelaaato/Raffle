@@ -10,11 +10,11 @@ namespace Raffle.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
         private EventsOrganizerEntities db = new EventsOrganizerEntities();
 
         public ActionResult Index()
         {
+            // Load events that are neither deleted nor closed as well as those who requires raffle.
             var events = db.Events.Where(e => e.delete_flag != true && e.hasRaffle == 1 && e.closed_flag == null).OrderBy(e => e.event_date).ToList();
 
             if (events.Count() != 0)
@@ -30,6 +30,8 @@ namespace Raffle.Controllers
 
         public ActionResult ValidatePasscode(string name)
         {
+            // get value of name variable passed from ValidatePasscode view.
+            // persist name of Event thru Session variable.
             Session["eventName"] = name;
 
             if (Session["eventName"] == null)
@@ -51,6 +53,8 @@ namespace Raffle.Controllers
         [HttpPost]
         public ActionResult ValidatePasscode(PasscodeModel model, Guid id)
         {
+            // get value of id variable passed from postback.
+            // persist Event id thru Session variable.
             Session["event"] = id;
 
             if (ModelState.IsValid)
@@ -70,8 +74,9 @@ namespace Raffle.Controllers
             return View();
         }
 
-        public ActionResult Exit()
+        public ActionResult ExitEvent()
         {
+            // clear all Session variables on Exit.
             Session.Abandon();
             return RedirectToAction("Index");
         }

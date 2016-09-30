@@ -113,7 +113,7 @@
     line-height:60px;
     text-align:center;
     color:#fff;
-    padding:0 auto;
+    padding:0;
     width:730px;
     margin:10px 0;
 }
@@ -325,24 +325,10 @@
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-    /*.slotMachine
-{
-    width:956px;
-    height:632px;
-    margin:0 auto;
-    position:relative;
-    background:url(../Images/raffle.png) no-repeat;
-}*/
+
 }
 @media (min-width: 768px) and (max-width: 991px) {
-    /*.slotMachine
-{
-    width:916px;
-    height:592px;
-    margin:0 auto;
-    position:relative;
-    background:url(../Images/raffle.png) no-repeat;
-}*/
+
 }
 @media (max-width: 767px) {
 

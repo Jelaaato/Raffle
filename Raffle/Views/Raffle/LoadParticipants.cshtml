@@ -54,8 +54,8 @@
 <!--SlotMachine and Sidebar-->
 <div class="row">
     <div class="col-lg-12">
-        <div class="col-lg-3 col-sm-12 col-md-3 customFont" style="height:100%;">
-            <img src="@Url.Action("LoadEventBanner","Participants")" style="width:100%;padding-top:15px;" />
+        <div class="col-lg-3 col-sm-12 col-xs-12 col-md-3 customFont" style="height:100%;">
+            <img src="@Url.Action("LoadEventBanner","Raffle")" class="banner" />
             <br />
             <br />
             <center>
@@ -65,20 +65,20 @@
                 <br />
                 <a href="@Url.Action("Prizes","Prize")" class="removeButton" style="font-size:15px;color:green;">Change</a>
                 <br />
-                <a href="@Url.Action("Exit","Home")" class="removeButton" style="font-size:13px;color:red;">Exit Event</a>
+                <a href="@Url.Action("ExitEvent","Home")" class="removeButton" style="font-size:15px;color:red;">Exit Event</a>
                 <br />
                 <br />
                 <br />
                 <span class="winnerTitle text-center">Winners</span>
                 <br />
                 <div id="autoScroll">
-                    @Html.Action("DisplayWinner", "Participants")
+                    @Html.Action("DisplayWinner", "Raffle")
                 </div>
             </center>
         </div>
-        <div class="col-lg-9 col-md-9 col-sm-12 events_background">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 events_background">
             <center>
-                <div class="centerVertically slotMachineContainer"></div>
+                <div class="centerVertically slotMachineContainer hidden-xs hidden-sm"></div>
             </center>
         </div>
     </div>
@@ -105,7 +105,7 @@
 
 <!--Capture and Pass Winner to Controller-->
 <script>
-    var baseUrl = '@Url.Action("UpdateFlag", "Participants")';
+    var baseUrl = '@Url.Action("UpdateFlags", "Raffle")';
     $('#raffleAction').on("click", function() {
         var url = baseUrl + '?prize_id=' + '@Model.prizes.prize_id' + '&prize_name=' + '@Model.prizes.prize_name' + '&wname=' + $('.name p span').text()
         location.href = url;
