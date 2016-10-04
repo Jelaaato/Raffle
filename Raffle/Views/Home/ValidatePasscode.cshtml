@@ -5,25 +5,30 @@
     ViewBag.Title = "Validate";
 }
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>@ViewBag.Title</title>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
 
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-<link href="~/Content/Site.css" rel="stylesheet" />
-<script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
 
+<!--header text "Event Name"-->
 <div class="container-fluid">
     <div class="row">
         <div style="height:40%;margin-top:auto;" class="text-center">
-            <br /><br /><br />
+            <br />
+            <br />
+            <br />
             <span class="nameText">@Session["eventName"].ToString()</span>
         </div>
     </div>
-</div>
-    
+</div>  
 <br />
 
+<!--Passcode Validation Form-->
 <center>
     <div style="width:25%;margin-top:5%;">
         <span class="removeBullet">@Html.ValidationSummary("", new { @class = "text-danger" })</span>
@@ -32,24 +37,27 @@
             <div class="form-group">
                 <h2 style="font-family:'Open Sans', sans-serif;">Enter Passcode</h2>
             </div>
-            
             <br />
-            
             <div class="form-group">
-
-                @Html.PasswordFor(a => a.passcode, new { @class = "text-center bottomBorderOnly", @autofocus= "autofocus", @style="font-size:30px;"})
-
-                <br /><br /><br /><br />
-
-                <button type="submit" class="removeButton">
-                    <img src="~/Images/right-arrow.png" />
-                </button>
-
+                @Html.PasswordFor(a => a.passcode, new 
+                    { 
+                        @class = "text-center bottomBorderOnly", 
+                        @autofocus= "autofocus", 
+                        @style="font-size:30px;"
+                    })
+            <br />
+            <br />
+            <br />
+            <br />
+            <button type="submit" class="removeButton">
+                <img src="~/Images/right-arrow.png" />
+            </button>
             </div>
         }
     </div>
 </center>
 
+<!--Scripts-->
 <script src="~/Scripts/jquery-1.9.1.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 

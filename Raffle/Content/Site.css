@@ -1,4 +1,6 @@
-﻿@font-face {
+﻿/*Font face (Open Sans)*/
+
+@font-face {
   font-family: 'Open Sans';
   font-weight: 300;
   font-style: normal;
@@ -27,84 +29,7 @@
        url('../Open Sans/fonts/Open-Sans-700/Open-Sans-700.svg#OpenSans') format('svg');
 }
 
-.events_background {
-    height: 100%;
-    position: relative;
-    background: url('../Images/background2.png') no-repeat center center fixed;
-    background-size: cover;
-}
-
-.removeBullet {
-    list-style: none;
-}
-
-.bottomBorderOnly
-{
-    border:0 !important;
-    outline: 0 !important;
-    background: transparent !important;
-    border-bottom: 1px solid black !important;
-    width: 100% !important;
-}
-
-.removeButton 
-{
-    padding: 0 !important;
-    outline: none !important;
-    border: none !important;
-    background: none !important;
-}
-
-.btnConfirm
-{
-    width:130px;
-    height:50px;
-    border-radius: 30px;
-    padding-top:10px;
-    outline: none !important;
-    border: 3px solid #F26C4F;
-    background-color:transparent;
-    font-size:15px;
-    color:black;
-    font-family:'Open Sans Semibold', sans-serif;
-    text-transform:uppercase;
-    position:absolute;
-    left:270px;
-    top:400px;
-    cursor:pointer;
-}
-
-.btnVoid 
-{
-    width:130px;
-    height:50px;
-    border-radius: 30px;
-    padding-top:10px;
-    outline: none !important;
-    border: 3px solid #F26C4F;
-    background-color:transparent;
-    font-size:15px;
-    color:black;
-    font-family:'Open Sans Semibold', sans-serif;
-    text-transform:uppercase;
-    position:absolute;
-    left:640px;
-    top:400px;
-    cursor:pointer;
-}
-
-.headerText 
-{
-    position: absolute;
-    top: 60px;
-    z-index:1;
-    font-size:80px;
-    color:white;
-    letter-spacing:50px;
-    font-family:'Open Sans', sans-serif;
-    text-transform:uppercase;
-    width:100%;
-}
+/*Carousel*/
 
 .carousel .item
 {
@@ -173,6 +98,96 @@
    transform: translate3d(0, 0, 0);
 }
 
+
+
+/*Buttons*/
+
+.btnConfirm
+{
+    width:130px;
+    height:50px;
+    border-radius: 30px;
+    padding-top:10px;
+    outline: none !important;
+    border: 3px solid #F26C4F;
+    background-color:transparent;
+    font-size:15px;
+    color:black;
+    font-family:'Open Sans Semibold', sans-serif;
+    text-transform:uppercase;
+    position:absolute;
+    left:270px;
+    top:400px;
+    cursor:pointer;
+}
+
+.btnVoid 
+{
+    width:130px;
+    height:50px;
+    border-radius: 30px;
+    padding-top:10px;
+    outline: none !important;
+    border: 3px solid #F26C4F;
+    background-color:transparent;
+    font-size:15px;
+    color:black;
+    font-family:'Open Sans Semibold', sans-serif;
+    text-transform:uppercase;
+    position:absolute;
+    left:640px;
+    top:400px;
+    cursor:pointer;
+}
+
+a.btnConfirm:hover
+{
+  background-color: #008000 !important;
+  text-decoration: none !important;
+  color:white;
+}
+
+a.btnVoid:hover
+{
+  background-color: red !important;
+  text-decoration: none !important;
+  color:white;
+}
+
+.removeButton 
+{
+    padding: 0 !important;
+    outline: none !important;
+    border: none !important;
+    background: none !important;
+}
+
+a.removeButton {
+    color:black;
+}
+
+a.removeButton:hover {
+    text-decoration:none;
+    color:black;
+}
+
+
+
+/*Text*/
+
+.headerText 
+{
+    position: absolute;
+    top: 60px;
+    z-index:1;
+    font-size:80px;
+    color:white;
+    letter-spacing:50px;
+    font-family:'Open Sans', sans-serif;
+    text-transform:uppercase;
+    width:100%;
+}
+
 .eventsText 
 {
     font-size:45px;
@@ -183,13 +198,6 @@
     text-transform:uppercase;
 }
 
-.eventsRow 
-{
-    height: 30% !important;
-    border-bottom:2px solid black;
-    padding-top:5%;
-}
-
 .messageText
 {
     font-size:45px;
@@ -197,11 +205,6 @@
     font-weight:bolder;
     font-family:'Open Sans', sans-serif;
     letter-spacing:20px;
-}
-
-.slotMachineContainer 
-{
-    font-family: 'Open Sans Semibold', sans-serif;
 }
 
 .customFont 
@@ -258,53 +261,6 @@
     /*letter-spacing: 5px;*/
 }
 
-
-.centerVertically {
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-}
-
-.badgeFontSize
-{
-    font-size:15px;
-}
-
-#autoScroll
-{
-    height:50%;
-    overflow-y:hidden;
-}
-
-a.btnConfirm:hover
-{
-  background-color: #008000 !important;
-  text-decoration: none !important;
-  color:white;
-}
-
-a.btnVoid:hover
-{
-  background-color: red !important;
-  text-decoration: none !important;
-  color:white;
-}
-
-a.removeButton {
-    color:black;
-}
-
-a.removeButton:hover {
-    text-decoration:none;
-    color:black;
-}
-
-.checkBox:hover 
-{
-    cursor:pointer;
-}
-
 .nameText 
 {
     font-size:80px;
@@ -314,11 +270,74 @@ a.removeButton:hover {
     text-transform:uppercase;
 }
 
+.badgeFontSize
+{
+    font-size:15px;
+}
+
+
+
+/*Background, Banner, Images*/
+
+.events_background {
+    height: 100%;
+    position: relative;
+    background: url('../Images/background3.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
 .banner 
 {
     width:100%;
     padding-top:15px;
 }
+
+
+
+/*Positions, Custom size etc.*/
+
+.bottomBorderOnly
+{
+    border:0 !important;
+    outline: 0 !important;
+    background: transparent !important;
+    border-bottom: 1px solid black !important;
+    width: 100% !important;
+}
+
+.eventsRow 
+{
+    height: 30% !important;
+    border-bottom:2px solid black;
+    padding-top:5%;
+}
+
+.centerVertically {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+#autoScroll
+{
+    height:50%;
+    overflow-y:hidden;
+}
+
+.slotMachineContainer 
+{
+    font-family: 'Open Sans Semibold', sans-serif;
+}
+
+.checkBox:hover 
+{
+    cursor:pointer;
+}
+
+
+
+/*Media Queries*/
 
 @media (min-width: 992px) and (max-width: 1199px) {
     .nameText
@@ -326,7 +345,6 @@ a.removeButton:hover {
         font-size:50px;
         letter-spacing:30px;
     }
-    
     .customTextLarge 
     {
         font-family: 'Open Sans', sans-serif;
@@ -358,7 +376,6 @@ a.removeButton:hover {
         font-size: 20px;
         letter-spacing: 10px;
     }
-
     .customTextLarge {
         font-family: 'Open Sans', sans-serif;
         font-size: 20px;
@@ -366,3 +383,5 @@ a.removeButton:hover {
         /*letter-spacing: 5px;*/
     }
 }
+
+

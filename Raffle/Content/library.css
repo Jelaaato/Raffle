@@ -1,3 +1,5 @@
+/*Font Face (Open Sans)*/
+
 @font-face {
   font-family: 'Open Sans';
   font-weight: 300;
@@ -26,6 +28,8 @@
        url('../Open Sans/fonts/Open-Sans-600/Open-Sans-600.svg#OpenSans') format('svg');
 }
 
+
+/*Slot Machine*/
 .barrage
 {
     white-space:nowrap;
@@ -125,6 +129,9 @@
     background-image:-ms-linear-gradient(90deg,#ff723a 0,#ff9d3e 100%);
 }
 
+
+
+/*Container*/
 .containerAppear
 {
     -webkit-animation:containerAppear 1s;
@@ -150,6 +157,9 @@
     transition:transform 15s cubic-bezier(0.365,.225,0,1.05);
 }
 
+
+
+/*Keyframes*/
 @-webkit-keyframes joysticksAnimate
 {
     0% {-webkit-transform:rotateX(0deg)}
@@ -216,11 +226,15 @@
     from{opacity:1}to{opacity:0}
 
 }
+
 @keyframes containerDisappear{
     from{opacity:1}to{opacity:0}
 
 }
 
+
+
+/*Winner name pop-up*/
 .screen
 {
     display:none;
@@ -233,6 +247,7 @@
     z-index:9999;
 
 }
+
 .screen .prize
 {
     width:1055px;
@@ -242,8 +257,6 @@
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    /*margin-left:-346.5px;
-    margin-top:-50px;display:none*/
 
 }
 
@@ -277,7 +290,6 @@
 
 .screen .prize .name
 {
-    /*background-color:white;*/
     width:700px;
     height:200px;
     margin:90px 0 0 160px
@@ -324,12 +336,17 @@
     padding-right: 0 !important;
 }
 
+
+
+/*Media Queries*/
 @media (min-width: 992px) and (max-width: 1199px) {
 
 }
+
 @media (min-width: 768px) and (max-width: 991px) {
 
 }
+
 @media (max-width: 767px) {
 
 }

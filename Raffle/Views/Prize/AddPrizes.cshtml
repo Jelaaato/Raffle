@@ -5,14 +5,17 @@
     ViewBag.Title = "Add";
 }
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>@ViewBag.Title</title>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
 
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-<link href="~/Content/Site.css" rel="stylesheet" />
-<script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
 
+<!--Add Prize Form-->
 <center>
     <div id="addNewPrize" class="centerVertically">
         <span class="removeBullet">@Html.ValidationSummary("", new { @class = "text-danger" })</span>
@@ -20,12 +23,34 @@
         {
             <div class="form-inline">
                 <div class="form-group">
-                    @Html.TextBoxFor(a => a.prize_name, new { @class = "bottomBorderOnly text-center customTextLarge", @autofocus = "autofocus", @placeholder = "Prize", autocomplete = "off" })
-                    <br /><br /><br />
-                    @Html.TextBoxFor(a => a.quantity, new { @Value = "", @class = "bottomBorderOnly text-center customTextLarge", @placeholder = "Quantity", autocomplete = "off" })
-                    <br /><br />
-                    @Html.CheckBoxFor(a => a.include_all, new { @class = "checkBox"})<span class="customTextSmall"> Include all participants</span>
-                    <br /><br /><br /><br />
+                    @Html.TextBoxFor(a => a.prize_name, new 
+                        { 
+                            @class = "bottomBorderOnly text-center customTextLarge", 
+                            @autofocus = "autofocus", 
+                            @placeholder = "Prize", 
+                            autocomplete = "off" 
+                        })
+                    <br />
+                    <br />
+                    <br />
+                    @Html.TextBoxFor(a => a.quantity, new 
+                        { 
+                            @Value = "", 
+                            @class = "bottomBorderOnly text-center customTextLarge", 
+                            @placeholder = "Quantity", 
+                            autocomplete = "off" 
+                        })
+                    <br />
+                    <br />
+                    @Html.CheckBoxFor(a => a.include_all, new 
+                        { 
+                            @class = "checkBox"
+                        })
+                    <span class="customTextSmall"> Include all participants</span>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                     <a href="@Url.Action("Prizes","Prize")">
                         <img src="~/Images/cancel.png" />
                     </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
