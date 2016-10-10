@@ -52,9 +52,9 @@
 
 
 <!--SlotMachine and Sidebar-->
-<div class="row">
+<div class="row" id="body">
     <div class="col-lg-12">
-        <div class="col-lg-3 col-sm-12 col-xs-12 col-md-3 customFont" style="height:100%;">
+        <div class="col-lg-3 col-sm-12 col-xs-12 col-md-12 customFont" style="height:100%;">
             <img src="@Url.Action("LoadEventBanner","Raffle")" class="banner" />
             <br />
             <br />
@@ -69,16 +69,25 @@
                 <br />
                 <br />
                 <br />
-                <span class="winnerTitle text-center">Winners</span>
-                <br />
-                <div id="autoScroll">
-                    @Html.Action("DisplayWinner", "Raffle")
+                <div class="removeButton visible-md visible-sm visible-xs" id="scroll">
+                    <a href="#raffle" class="removeButton">
+                        <img src="~/Images/down-arrow.png" width="32" height="32"/>
+                        <br />
+                        <br />
+                        <span class="customTextLarge text-center">Start Raffle</span>
+                    </a>
                 </div>
-            </center>
+                    <br />
+                    <span class="winnerTitle text-center hidden-md hidden-sm hidden-xs">Winners</span>
+                    <br />
+                    <div id="autoScroll" class="hidden-md hidden-sm hidden-xs">
+                        @Html.Action("DisplayWinner", "Raffle")
+                    </div>
+</center>
         </div>
-        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 events_background">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 events_background" id="raffle">
             <center>
-                <div class="centerVertically slotMachineContainer hidden-xs hidden-sm"></div>
+                <div class="centerVertically slotMachineContainer"></div>
             </center>
         </div>
     </div>
@@ -123,6 +132,19 @@
     function Void() {
         document.getElementById('showPrize').style.display = "none";
     }
+</script>
+
+<!--Smooth Scroll-->
+<script type="text/javascript">
+    $("#scroll a[href^='#']").on('click', function (e) {
+        e.preventDefault();
+        var hash = this.hash;
+        $('#body').animate({
+            scrollTop: $(hash).offset().top
+        }, 300, function () {
+            window.location.hash = hash;
+        })
+    });
 </script>
 
 

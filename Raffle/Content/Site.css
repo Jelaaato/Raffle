@@ -282,7 +282,7 @@ a.removeButton:hover {
 .events_background {
     height: 100%;
     position: relative;
-    background: url('../Images/background3.png') no-repeat center center fixed;
+    background: url('../Images/background3.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 

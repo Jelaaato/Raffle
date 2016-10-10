@@ -30,6 +30,8 @@
           <Property Name="participant_count" Type="int" />
           <Property Name="closed_flag" Type="bit" />
           <Property Name="closed_datetime" Type="smalldatetime" />
+          <Property Name="reopen_flag" Type="bit" />
+          <Property Name="reopen_datetime" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="Participants">
           <Key>
@@ -52,6 +54,8 @@
           <Property Name="winnerAgain_flag" Type="bit" />
           <Property Name="out_flag" Type="bit" />
           <Property Name="out_datetime" Type="smalldatetime" />
+          <Property Name="classification" Type="smallint" />
+          <Property Name="others" Type="varchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="Prizes">
           <Key>
@@ -64,6 +68,9 @@
           <Property Name="prize_qty" Type="int" Nullable="false" />
           <Property Name="prizeout_qty" Type="int" />
           <Property Name="includeAll_flag" Type="bit" Nullable="false" />
+          <Property Name="delete_flag" Type="bit" />
+          <Property Name="datetime_deleted" Type="datetime" />
+          <Property Name="datetime_added" Type="datetime" />
         </EntityType>
         <EntityType Name="Winners">
           <Key>
@@ -113,6 +120,8 @@
           <Property Name="registration_req" Type="Int16" />
           <Property Name="closed_flag" Type="Boolean" />
           <Property Name="closed_datetime" Type="DateTime" Precision="0" />
+          <Property Name="reopen_flag" Type="Boolean" />
+          <Property Name="reopen_datetime" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Participants">
           <Key>
@@ -135,6 +144,8 @@
           <Property Name="winnerAgain_flag" Type="Boolean" />
           <Property Name="out_flag" Type="Boolean" />
           <Property Name="out_datetime" Type="DateTime" Precision="0" />
+          <Property Name="classification" Type="Int16" />
+          <Property Name="others" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Prizes">
           <Key>
@@ -147,6 +158,9 @@
           <Property Name="prize_qty" Type="Int32" Nullable="false" />
           <Property Name="prizeout_qty" Type="Int32" />
           <Property Name="includeAll_flag" Type="Boolean" Nullable="false" />
+          <Property Name="delete_flag" Type="Boolean" />
+          <Property Name="datetime_added" Type="DateTime" Precision="3" />
+          <Property Name="datetime_deleted" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Winners">
           <Key>
@@ -176,6 +190,8 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Events">
               <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="reopen_datetime" ColumnName="reopen_datetime" />
+                <ScalarProperty Name="reopen_flag" ColumnName="reopen_flag" />
                 <ScalarProperty Name="closed_datetime" ColumnName="closed_datetime" />
                 <ScalarProperty Name="closed_flag" ColumnName="closed_flag" />
                 <ScalarProperty Name="registration_req" ColumnName="registration_req" />
@@ -203,6 +219,8 @@
           <EntitySetMapping Name="Participants">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Participants">
               <MappingFragment StoreEntitySet="Participants">
+                <ScalarProperty Name="others" ColumnName="others" />
+                <ScalarProperty Name="classification" ColumnName="classification" />
                 <ScalarProperty Name="out_datetime" ColumnName="out_datetime" />
                 <ScalarProperty Name="out_flag" ColumnName="out_flag" />
                 <ScalarProperty Name="winnerAgain_flag" ColumnName="winnerAgain_flag" />
@@ -226,6 +244,9 @@
           <EntitySetMapping Name="Prizes">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Prizes">
               <MappingFragment StoreEntitySet="Prizes">
+                <ScalarProperty Name="datetime_deleted" ColumnName="datetime_deleted" />
+                <ScalarProperty Name="datetime_added" ColumnName="datetime_added" />
+                <ScalarProperty Name="delete_flag" ColumnName="delete_flag" />
                 <ScalarProperty Name="prize_id" ColumnName="prize_id" />
                 <ScalarProperty Name="event_id" ColumnName="event_id" />
                 <ScalarProperty Name="prize_name" ColumnName="prize_name" />

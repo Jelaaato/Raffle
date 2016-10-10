@@ -21,5 +21,8 @@ namespace Raffle.Models
         public int prize_qty { get; set; }
         public Nullable<int> prizeout_qty { get; set; }
         public bool includeAll_flag { get; set; }
+        public Nullable<bool> delete_flag { get; set; }
+        public Nullable<System.DateTime> datetime_added { get; set; }
+        public Nullable<System.DateTime> datetime_deleted { get; set; }
     }
 }

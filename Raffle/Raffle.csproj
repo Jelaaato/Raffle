@@ -156,7 +156,9 @@
     <Content Include="Images\background3.jpg" />
     <Content Include="Images\button1.png" />
     <Content Include="Images\cancel.png" />
+    <Content Include="Images\down-arrow.png" />
     <Content Include="Images\frame1.png" />
+    <Content Include="Images\grandprize.png" />
     <Content Include="Images\joysticks.png" />
     <Content Include="Images\prize2.png" />
     <Content Include="Images\raffle.png" />

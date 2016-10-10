@@ -31,5 +31,7 @@ namespace Raffle.Models
         public Nullable<bool> winnerAgain_flag { get; set; }
         public Nullable<bool> out_flag { get; set; }
         public Nullable<System.DateTime> out_datetime { get; set; }
+        public Nullable<short> classification { get; set; }
+        public string others { get; set; }
     }
 }

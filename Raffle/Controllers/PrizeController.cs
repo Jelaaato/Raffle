@@ -26,7 +26,7 @@ namespace Raffle.Controllers
                 var model = new PrizeViewModel
                 {
                     prizes = (from b in db.Prizes
-                             where b.event_id == id && b.raffle_flag == false
+                             where b.event_id == id && b.raffle_flag == false && b.delete_flag == null
                              select new PrizeDTO
                              {
                                  prize_name = b.prize_name,
@@ -71,7 +71,8 @@ namespace Raffle.Controllers
                     raffle_flag = false,
                     prize_qty = model.quantity,
                     prizeout_qty = 0,
-                    includeAll_flag = model.include_all
+                    includeAll_flag = model.include_all,
+                    datetime_added = DateTime.Now
                 };
 
                 db.Prizes.Add(prizes);
@@ -91,7 +92,8 @@ namespace Raffle.Controllers
         {
             // delete prize
             Prizes prizes = db.Prizes.Find(id);
-            db.Prizes.Remove(prizes);
+            prizes.delete_flag = true;
+            prizes.datetime_deleted = DateTime.Now;
             db.SaveChanges();
 
             return RedirectToAction("Prizes");
