@@ -14,6 +14,11 @@ namespace Raffle.Models
     
     public partial class Events
     {
+        public Events()
+        {
+            this.Participants = new HashSet<Participants>();
+        }
+    
         public System.Guid event_id { get; set; }
         public string event_name { get; set; }
         public System.DateTime event_date { get; set; }
@@ -37,5 +42,8 @@ namespace Raffle.Models
         public Nullable<System.DateTime> closed_datetime { get; set; }
         public Nullable<bool> reopen_flag { get; set; }
         public Nullable<System.DateTime> reopen_datetime { get; set; }
+        public Nullable<short> registration_type { get; set; }
+    
+        public virtual ICollection<Participants> Participants { get; set; }
     }
 }

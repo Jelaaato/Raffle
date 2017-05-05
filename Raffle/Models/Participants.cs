@@ -33,5 +33,7 @@ namespace Raffle.Models
         public Nullable<System.DateTime> out_datetime { get; set; }
         public Nullable<short> classification { get; set; }
         public string others { get; set; }
+    
+        public virtual Events Events { get; set; }
     }
 }

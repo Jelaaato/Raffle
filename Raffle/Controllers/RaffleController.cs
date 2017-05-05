@@ -17,107 +17,115 @@ namespace Raffle.Controllers
         // GET: Participants
         public ActionResult LoadParticipants(PrizeViewModel model)
         {
-            if (Session["event"] == null)
+            try
             {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                var id = new Guid(Session["event"].ToString());
-                var reg_req = db.Events.Where(e => e.event_id == id).Select(e => e.registration_req).FirstOrDefault();
-                var prize_id = new Guid(Session["prizeId"].ToString());
-                bool includeAll = (bool)db.Prizes.Where(p => p.prize_id == prize_id).Select(p => p.includeAll_flag).FirstOrDefault();
-
-                if(reg_req == 1)
+                if (Session["event"] == null)
                 {
-                    if (includeAll)
-                    {
-                        ParticipantsViewModel ptcpnts = new ParticipantsViewModel
-                        {
-                            participants = (from p in db.Participants
-                                            where p.event_id == id && p.winnerAgain_flag == null && p.delete_flag == null && p.registered_flag == true && p.out_flag == null
-                                            select p.display_name).ToList(),
-
-                            prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
-                        };
-
-                        if (ptcpnts.prizes == null)
-                        {
-                            TempData["showModal"] = "true";
-                            return RedirectToAction("Prizes", "Prize");
-                        }
-                        else
-                        {
-                            return View(ptcpnts);
-                        }
-                    }
-                    else
-                    {
-                        ParticipantsViewModel ptcpnts = new ParticipantsViewModel
-                        {
-                            participants = (from p in db.Participants
-                                            where p.event_id == id && p.winner_flag == null && p.delete_flag == null && p.registered_flag == true && p.out_flag == null && p.winnerAgain_flag == null
-                                            select p.display_name).ToList(),
-
-                            prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
-                        };
-
-                        if (ptcpnts.prizes == null)
-                        {
-                            TempData["showModal"] = "true";
-                            return RedirectToAction("Prizes", "Prize");
-                        }
-                        else
-                        {
-                            return View(ptcpnts);
-                        }
-                    }
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    if (includeAll)
+                    var id = new Guid(Session["event"].ToString());
+                    var reg_req = db.Events.Where(e => e.event_id == id).Select(e => e.registration_req).FirstOrDefault();
+                    var prize_id = new Guid(Session["prizeId"].ToString());
+                    bool includeAll = (bool)db.Prizes.Where(p => p.prize_id == prize_id).Select(p => p.includeAll_flag).FirstOrDefault();
+
+                    if (reg_req == 1)
                     {
-                        ParticipantsViewModel ptcpnts = new ParticipantsViewModel
+                        if (includeAll)
                         {
-                            participants = (from p in db.Participants
-                                            where p.event_id == id && p.winnerAgain_flag == null && p.delete_flag == null && p.out_flag == null
-                                            select p.display_name).ToList(),
+                            ParticipantsViewModel ptcpnts = new ParticipantsViewModel
+                            {
+                                participants = (from p in db.Participants
+                                                where p.event_id == id && p.winnerAgain_flag == null && p.delete_flag == null && p.registered_flag == true && p.out_flag == null
+                                                select p.display_name).OrderBy(a => Guid.NewGuid()).ToList(),
 
-                            prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
-                        };
+                                prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
+                            };
 
-                        if (ptcpnts.prizes == null)
-                        {
-                            TempData["showModal"] = "true";
-                            return RedirectToAction("Prizes", "Prize");
+                            if (ptcpnts.prizes == null)
+                            {
+                                TempData["showModal"] = "true";
+                                return RedirectToAction("Prizes", "Prize");
+                            }
+                            else
+                            {
+                                return View(ptcpnts);
+                            }
                         }
                         else
                         {
-                            return View(ptcpnts);
+                            ParticipantsViewModel ptcpnts = new ParticipantsViewModel
+                            {
+                                participants = (from p in db.Participants
+                                                where p.event_id == id && p.winner_flag == null && p.delete_flag == null && p.registered_flag == true && p.out_flag == null && p.winnerAgain_flag == null
+                                                select p.display_name).OrderBy(a => Guid.NewGuid()).ToList(),
+
+                                prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
+                            };
+
+                            if (ptcpnts.prizes == null)
+                            {
+                                TempData["showModal"] = "true";
+                                return RedirectToAction("Prizes", "Prize");
+                            }
+                            else
+                            {
+                                return View(ptcpnts);
+                            }
                         }
                     }
                     else
                     {
-                        ParticipantsViewModel ptcpnts = new ParticipantsViewModel
+                        if (includeAll)
                         {
-                            participants = (from p in db.Participants
-                                            where p.event_id == id && p.winner_flag == null && p.delete_flag == null && p.out_flag == null && p.winnerAgain_flag == null
-                                            select p.display_name).ToList(),
+                            ParticipantsViewModel ptcpnts = new ParticipantsViewModel
+                            {
+                                participants = (from p in db.Participants
+                                                where p.event_id == id && p.winnerAgain_flag == null && p.delete_flag == null && p.out_flag == null
+                                                select p.display_name).OrderBy(a => Guid.NewGuid()).ToList(),
 
-                            prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
-                        };
+                                prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
+                            };
 
-                        if (ptcpnts.prizes == null)
-                        {
-                            TempData["showModal"] = "true";
-                            return RedirectToAction("Prizes", "Prize");
+                            if (ptcpnts.prizes == null)
+                            {
+                                TempData["showModal"] = "true";
+                                return RedirectToAction("Prizes", "Prize");
+                            }
+                            else
+                            {
+                                return View(ptcpnts);
+                            }
                         }
                         else
                         {
-                            return View(ptcpnts);
+                            ParticipantsViewModel ptcpnts = new ParticipantsViewModel
+                            {
+                                participants = (from p in db.Participants
+                                                where p.event_id == id && p.winner_flag == null && p.delete_flag == null && p.out_flag == null && p.winnerAgain_flag == null
+                                                select p.display_name).OrderBy(a => Guid.NewGuid()).ToList(),
+
+                                prizes = db.Prizes.OrderBy(a => a.prize_name).Where(a => a.event_id == id && a.prize_id == prize_id && a.raffle_flag == false).FirstOrDefault()
+                            };
+
+                            if (ptcpnts.prizes == null)
+                            {
+                                TempData["showModal"] = "true";
+                                return RedirectToAction("Prizes", "Prize");
+                            }
+                            else
+                            {
+                                return View(ptcpnts);
+                            }
                         }
                     }
-                }
+                }  
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", e);
+                return View("~/Views/Shared/Errors.cshtml");
             }
         }
 
@@ -196,7 +204,8 @@ namespace Raffle.Controllers
 
             catch (Exception e)
             {
-                throw e;
+                ModelState.AddModelError("", e);
+                return View("~/Views/Shared/Errors.cshtml");
             }
 
             return RedirectToAction("LoadParticipants");

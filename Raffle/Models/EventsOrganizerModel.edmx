@@ -32,6 +32,7 @@
           <Property Name="closed_datetime" Type="smalldatetime" />
           <Property Name="reopen_flag" Type="bit" />
           <Property Name="reopen_datetime" Type="smalldatetime" />
+          <Property Name="registration_type" Type="smallint" />
         </EntityType>
         <EntityType Name="Participants">
           <Key>
@@ -39,7 +40,7 @@
           </Key>
           <Property Name="participant_id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="event_id" Type="uniqueidentifier" />
-          <Property Name="employee_number" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="employee_number" Type="varchar" MaxLength="100" />
           <Property Name="last_name" Type="varchar" MaxLength="100" />
           <Property Name="first_name" Type="varchar" MaxLength="100" />
           <Property Name="middle_name" Type="varchar" MaxLength="100" />
@@ -85,11 +86,27 @@
           <Property Name="winner_department" Type="varchar" MaxLength="200" />
           <Property Name="raffled_datetime" Type="datetime" />
         </EntityType>
+        <Association Name="FK__Participa__event__4BAD0A80">
+          <End Role="Events" Type="Self.Events" Multiplicity="0..1" />
+          <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="event_id" />
+            </Principal>
+            <Dependent Role="Participants">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="EventsOrganizerModelStoreContainer">
           <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Participants" EntityType="Self.Participants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prizes" EntityType="Self.Prizes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Winners" EntityType="Self.Winners" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Participa__event__4BAD0A80" Association="Self.FK__Participa__event__4BAD0A80">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="Participants" EntitySet="Participants" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -122,6 +139,8 @@
           <Property Name="closed_datetime" Type="DateTime" Precision="0" />
           <Property Name="reopen_flag" Type="Boolean" />
           <Property Name="reopen_datetime" Type="DateTime" Precision="0" />
+          <Property Name="registration_type" Type="Int16" />
+          <NavigationProperty Name="Participants" Relationship="EventsOrganizerModel.FK__Participa__event__4BAD0A80" FromRole="Events" ToRole="Participants" />
         </EntityType>
         <EntityType Name="Participants">
           <Key>
@@ -129,7 +148,7 @@
           </Key>
           <Property Name="participant_id" Type="Guid" Nullable="false" />
           <Property Name="event_id" Type="Guid" />
-          <Property Name="employee_number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="employee_number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="middle_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -146,6 +165,7 @@
           <Property Name="out_datetime" Type="DateTime" Precision="0" />
           <Property Name="classification" Type="Int16" />
           <Property Name="others" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Events" Relationship="EventsOrganizerModel.FK__Participa__event__4BAD0A80" FromRole="Participants" ToRole="Events" />
         </EntityType>
         <EntityType Name="Prizes">
           <Key>
@@ -180,7 +200,23 @@
           <EntitySet Name="Participants" EntityType="Self.Participants" />
           <EntitySet Name="Prizes" EntityType="Self.Prizes" />
           <EntitySet Name="Winners" EntityType="Self.Winners" />
+          <AssociationSet Name="FK__Participa__event__4BAD0A80" Association="EventsOrganizerModel.FK__Participa__event__4BAD0A80">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="Participants" EntitySet="Participants" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__Participa__event__4BAD0A80">
+          <End Type="EventsOrganizerModel.Events" Role="Events" Multiplicity="0..1" />
+          <End Type="EventsOrganizerModel.Participants" Role="Participants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="event_id" />
+            </Principal>
+            <Dependent Role="Participants">
+              <PropertyRef Name="event_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -190,6 +226,7 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="EventsOrganizerModel.Events">
               <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="registration_type" ColumnName="registration_type" />
                 <ScalarProperty Name="reopen_datetime" ColumnName="reopen_datetime" />
                 <ScalarProperty Name="reopen_flag" ColumnName="reopen_flag" />
                 <ScalarProperty Name="closed_datetime" ColumnName="closed_datetime" />

@@ -60,30 +60,39 @@ namespace Raffle.Controllers
             var id = new Guid(Session["event"].ToString());
             int prizecount = model.quantity;
 
-            if (ModelState.IsValid)
+            try
             {
-                //insert prize to dbo.Prizes
-                Prizes prizes = new Prizes()
+                if (ModelState.IsValid)
                 {
-                    prize_id = Guid.NewGuid(),
-                    event_id = id,
-                    prize_name = model.prize_name,
-                    raffle_flag = false,
-                    prize_qty = model.quantity,
-                    prizeout_qty = 0,
-                    includeAll_flag = model.include_all,
-                    datetime_added = DateTime.Now
-                };
+                    //insert prize to dbo.Prizes
+                    Prizes prizes = new Prizes()
+                    {
+                        prize_id = Guid.NewGuid(),
+                        event_id = id,
+                        prize_name = model.prize_name,
+                        raffle_flag = false,
+                        prize_qty = model.quantity,
+                        prizeout_qty = 0,
+                        includeAll_flag = model.include_all,
+                        datetime_added = DateTime.Now
+                    };
 
-                db.Prizes.Add(prizes);
-                db.SaveChanges();
+                    db.Prizes.Add(prizes);
+                    db.SaveChanges();
 
-                ModelState.Clear();
-                return RedirectToAction("Prizes");
+                    ModelState.Clear();
+                    return RedirectToAction("Prizes");
+                }
+                else
+                {
+                    return View();
+                }
             }
-            else
+
+            catch (Exception e)
             {
-                return View();
+                ModelState.AddModelError("", e);
+                return View("~/Views/Shared/Errors.cshtml");
             }
             
         }

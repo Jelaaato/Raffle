@@ -9,7 +9,7 @@ function drawARaffle(t) {
 //displays slot machine
 function creatSlotMachine(t) {
     var n, s, i, o, a, c; !function () {
-        n = $("<div>", { "class": "slotMachine" }).appendTo(t), s = $("<div>", { "class": "winning" }).appendTo(n), i = $("<div>", { "class": "list" }).appendTo(s), o = $("<div>", { "class": "frame" }).appendTo(n), c = $("<img>", { "class": "joysticks", src: "/Images/joysticks.png" }).appendTo(n), a = $("<img>", { "class": "button", src: "/Images/button1.png" }).appendTo(n)
+        n = $("<div>", { "class": "slotMachine" }).appendTo(t), s = $("<div>", { "class": "winning" }).appendTo(n), i = $("<div>", { "class": "list" }).appendTo(s), o = $("<div>", { "class": "frame" }).appendTo(n), c = $("<img>", { "class": "joysticks", src: "../Images/joysticks.png" }).appendTo(n), a = $("<img>", { "class": "button", src: "../Images/button1.png" }).appendTo(n)
     }(); var e = {}; return e.slotMachine = n, e.winning = s, e.list = i, e.frame = o, e.button = a, e.joysticks = c, e
 }
 
@@ -33,7 +33,8 @@ function slotMachine(t, n) {
 function drawARaffle(t, n) {
     t.list.children("p").removeClass("pitch"),
     $(t.button).unbind("click").css("cursor", "default");
-    var s = Math.ceil(200 * Math.random()) + 90;
+    var s = 250;
+    //var s = Math.ceil(200 * Math.random()) + 90;
     slotMachine(t.list, s),
     setTimeout(function () {
         $(t.list.children("p")[297 - s]).addClass("pitch");

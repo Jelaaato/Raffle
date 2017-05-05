@@ -109,10 +109,10 @@
     border-radius: 30px;
     padding-top:10px;
     outline: none !important;
-    border: 3px solid #F26C4F;
+    border: 3px solid #ECD75C;
     background-color:transparent;
     font-size:15px;
-    color:black;
+    color:white;
     font-family:'Open Sans Semibold', sans-serif;
     text-transform:uppercase;
     position:absolute;
@@ -128,10 +128,10 @@
     border-radius: 30px;
     padding-top:10px;
     outline: none !important;
-    border: 3px solid #F26C4F;
+    border: 3px solid #ECD75C;
     background-color:transparent;
     font-size:15px;
-    color:black;
+    color:white;
     font-family:'Open Sans Semibold', sans-serif;
     text-transform:uppercase;
     position:absolute;
@@ -142,16 +142,16 @@
 
 a.btnConfirm:hover
 {
-  background-color: #008000 !important;
+  background-color: #F7D76F !important;
   text-decoration: none !important;
-  color:white;
+  color:black;
 }
 
 a.btnVoid:hover
 {
-  background-color: red !important;
+  background-color: #F7D76F !important;
   text-decoration: none !important;
-  color:white;
+  color:black;
 }
 
 .removeButton 

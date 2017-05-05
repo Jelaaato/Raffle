@@ -44,6 +44,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.10\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp">
       <Private>True</Private>
     </Reference>
@@ -157,6 +160,7 @@
     <Content Include="Images\button1.png" />
     <Content Include="Images\cancel.png" />
     <Content Include="Images\down-arrow.png" />
+    <Content Include="Images\error_bg.jpg" />
     <Content Include="Images\frame1.png" />
     <Content Include="Images\grandprize.png" />
     <Content Include="Images\joysticks.png" />
@@ -238,6 +242,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RaffleController.cs" />
     <Compile Include="Controllers\PrizeController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -259,6 +264,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EventsOrganizerModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReportsViewModel.cs" />
     <Compile Include="Models\Participants.cs">
       <DependentUpon>EventsOrganizerModel.tt</DependentUpon>
     </Compile>
@@ -285,6 +291,8 @@
     <Content Include="Views\Prize\Prizes.cshtml" />
     <Content Include="Views\Raffle\_DisplayWinner.cshtml" />
     <Content Include="Views\Prize\AddPrizes.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
